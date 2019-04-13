@@ -5,6 +5,7 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8"
   },
   "scripts": {
@@ -16,6 +17,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "https://olympiabackend.appspot.com",
   "browserslist": [
     ">0.2%",
     "not dead",
