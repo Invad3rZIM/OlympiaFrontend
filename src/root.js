@@ -6,6 +6,10 @@ import {
   Redirect,
   withRouter
 } from "react-router-dom";
+import ReactDOM from 'react-dom';
+
+import CommonDataManager from './CommonDataManager';
+
 
 ////////////////////////////////////////////////////////////
 // 1. Click the public page
@@ -89,6 +93,12 @@ function Protected() {
   return <h3>Protected</h3>;
 }
 
+class UserHome extends Component {
+  render() {
+    return <div><p>this is only for users!</p></div>;
+  }
+}
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -109,18 +119,14 @@ class Login extends Component {
   };
 
   render() {
-    let { from } = this.props.location.state || { from: { pathname: "/" } };
-    let { redirectToReferrer } = this.state;
-
     return (
       <div>
           <form>
               <input type="text" name="username" placeholder="username" onChange={this.handleChange}></input>
               <input type="password" name="password" placeholder="password" onChange={this.handleChange}></input>
 
-      <button type="button" onClick={this.handleSubmit}>Log in</button>
-       
-               </form>
+              <button type="button" onClick={this.handleSubmit}>Log in</button>
+          </form>
       </div>
     );
   }
@@ -132,6 +138,8 @@ class Login extends Component {
   handleSubmit(event) {
     (async () => {
       await this.attemptLogin();
+
+
     })();
     event.preventDefault();
   }
@@ -152,35 +160,30 @@ class Login extends Component {
     }).then((response) => response.json()).then((responseJson) => {
    
    //on success
-      alert(responseJson.Key);
+
+
+    // When storing data.
+    let commonData = CommonDataManager.getInstance();
+    commonData.setSessionKey(responseJson.Key);
+    commonData.setUsername(this.state.username);
+
+      console.log(commonData.getSessionKey());
+      console.log(commonData.getUsername());
+
+
+      if (CommonDataManager.getInstance().getSessionKey() == 49) {
+        ReactDOM.render(
+          <UserHome />,
+          document.getElementById('root')
+          );
+  
+        }
+
     }).catch((error) => {
       alert(error);
       //on failure
     });
     }
-
-
-  /*async attemptLogin() {
-    try {
-      const response = await fetch('https://olympiabackend.appspot.com/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: this.state.username,
-          password: this.state.password,
-        })
-      });
-      //const data = await response.json();
-    
-
-   //   this.setState({ people: data.results, isLoading: false });
-    } catch (error) {
-     // this.setState({ error: error.message, isLoading: false });
-    alert(error);
-    }
-  }*/
 }
 
  
