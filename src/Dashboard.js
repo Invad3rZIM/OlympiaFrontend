@@ -7,6 +7,20 @@ import {attemptLogin, logout} from './actions/userActions'
 import store from './store';
 import { redirect } from './actions/redirectActions';
 
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  Container, 
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
+
 function mapStateToProps(state) {
   return {
     user: state.user
@@ -49,11 +63,13 @@ class Dashboard extends Component {
   render() {
 
     return (
-      <div>
+      <div>  <Container>
           <p>Welcome to the dashboard!</p>
+        
+
 
           <button type="submit" onClick={this.logout}>Logout</button>
-      </div>
+    </Container>  </div>
     )
   }
 }
