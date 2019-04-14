@@ -65,8 +65,7 @@ class Dashboard extends Component {
     return (
       <div>  <Container>
           <p>Welcome to the dashboard!</p>
-        
-
+      
 
           <button type="submit" onClick={this.logout}>Logout</button>
     </Container>  </div>
