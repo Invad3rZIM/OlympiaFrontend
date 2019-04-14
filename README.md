@@ -67,3 +67,16 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 # OlympiaFrontend
+
+
+### Package Install
+react (npm install react)
+prop-types (npm install prop-types)
+axios (npm install axios)
+react axios (npm install react-axios)
+react router (npm install react-router-dom)
+bootstrap (npm install bootstrap --save)
+reactstrap (npm install --save reactstrap react react-dom)
+redux logger (npm i --save redux-logger)
+redux promise middleware (npm i redux-promise-middleware)
+redux thunk (npm install --save redux-thunk)
