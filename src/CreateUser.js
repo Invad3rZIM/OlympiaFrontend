@@ -5,15 +5,14 @@ import {connect} from "react-redux"
 
 import {attemptLogin, logout} from './actions/userActions'
 import store from './store';
-import {redirect} from './actions/redirectActions';
+import { redirect } from './actions/redirectActions';
 
 function mapStateToProps(state) {
   return {
-    user: state.user
   };
 }
 
-class Login extends Component {
+class CreateUser extends Component {
   constructor(props) {
     super(props);
     
@@ -27,6 +26,7 @@ class Login extends Component {
     this.logout = this.logout.bind(this);
     this.createUser = this.createUser.bind(this);
   }
+
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
   }
@@ -34,9 +34,7 @@ class Login extends Component {
   handleSubmit(event) {
 
     attemptLogin(this.state.username, this.state.password)
-
-    redirect("DASHBOARD")
-    
+  
     event.preventDefault();
   }
 
@@ -45,24 +43,27 @@ class Login extends Component {
   }
 
   createUser() {
-    redirect("CREATE_USER")
+    redirect("DASHBOARD")
   }
 
   render() {
     return (
       <div>
-        <form>
-        <br/> <br/>
+
+      <input type="text" placeholder="first name" name="username" onChange ={this.handleChange}></input>
+
+      <input type="text" placeholder="last name" name="username" onChange ={this.handleChange}></input>
+
       <input type="text" placeholder="username" name="username" onChange ={this.handleChange}></input>
-        <input type="password" placeholder="password" name="password" onChange={this.handleChange}></input>
-<br/>
-        <button onClick={this.handleSubmit} >Login</button>
-        <br/> <br/> <br/>
-        <button onClick={this.createUser} > New User? </button>
-        </form>
+
+      <input type="text" placeholder="password" name="username" onChange ={this.handleChange}></input>
+      <input type="text" placeholder="confirm password password" name="username" onChange ={this.handleChange}></input>
+
+
+      <button type="submit" onClick={this.createUser}>Create User</button>
       </div>
     )
   }
 }
 
-export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps)(CreateUser)

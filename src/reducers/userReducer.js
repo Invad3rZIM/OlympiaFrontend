@@ -8,9 +8,7 @@ const userReducer = (state={username:"X", password:"Y", key:0, userType:""}, act
         case "LOGOUT" : {
             state = {...state, password: "", username: "", key:0, userType:""}
             break;
-        } case "E" : {
-            throw new Error("AAA")
-        }
+        } 
     }
     return state;
 };
