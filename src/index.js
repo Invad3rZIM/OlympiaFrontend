@@ -1,16 +1,46 @@
-/**
-  This CodeSandbox has been automatically generated using
-  `codesandboxer`. If you're curious how that happened, you can
-  check out our docs here: https://github.com/noviny/codesandboxer
-
-  If you experience any struggles with this sandbox, please raise an issue
-  on github. :)
-*/
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './root';
+import './index.css';
+import Login from './Login';
+import * as serviceWorker from './serviceWorker';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import logger from "redux-logger"
+import thunk from "redux-thunk"
+import axios from 'axios';
 
-ReactDOM.render(
-<App />,
-document.getElementById('root')
-);
+/*const error = (store) => (next) => (action) => {
+    try {
+        next(action);
+    } catch(e) {
+        console.log("AHHH", e);
+    }
+}
+
+const middleware = applyMiddleware(logger, thunk, error);
+const store = createStore(reducers, {}, middleware);
+
+
+store.subscribe(() => {
+    console.log("store changed ", store.getState())
+})
+
+store.dispatch((dispatch) => {
+    dispatch({type: "CHANGE_USER", payload: "XXXTENTACION"})
+    axios.get("http://rest.learncode.academy/api/kirk/users").then((response) => {
+      
+    dispatch({type: "CHANGE_PASS", payload: "died in vain"})  
+    }).catch((err) => {
+        console.log("Testing")
+    })
+})*/
+import store from "./store"
+import {Provider} from 'react-redux';
+import {login} from './actions/userActions'
+
+
+ReactDOM.render(<Provider store={store}><Login /></Provider>, document.getElementById('root'));
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
