@@ -7,6 +7,11 @@ import {attemptLogin, logout} from './actions/userActions'
 import store from './store';
 import {redirect} from './actions/redirectActions';
 
+import Button from '@material-ui/core/Button';
+import { getAllArenas } from './actions/arenaActions';
+
+import { getAllEvents } from './actions/eventActions';
+
 function mapStateToProps(state) {
   return {
     user: state.user
@@ -32,11 +37,10 @@ class Login extends Component {
   }
 
   handleSubmit(event) {
-
+    getAllArenas()
+    getAllEvents()
     attemptLogin(this.state.username, this.state.password)
-
-    redirect("DASHBOARD")
-    
+   
     event.preventDefault();
   }
 
@@ -56,9 +60,9 @@ class Login extends Component {
       <input type="text" placeholder="username" name="username" onChange ={this.handleChange}></input>
         <input type="password" placeholder="password" name="password" onChange={this.handleChange}></input>
 <br/>
-        <button onClick={this.handleSubmit} >Login</button>
+        <Button variant="contained" color="primary" onClick={this.handleSubmit} >Login</Button>
         <br/> <br/> <br/>
-        <button onClick={this.createUser} > New User? </button>
+        <Button color="ff00ff" variant="contained" onClick={this.createUser} > New User? </Button>
         </form>
       </div>
     )

@@ -8,6 +8,10 @@ const errors = (state={error:""}, action) => {
             state = {...state, error:""}
             break
         }
+
+        case "CREATE_ARENA_SUCCESS" : {
+            state = {...state, error : "success"}
+        }
     }
     return state;
 }

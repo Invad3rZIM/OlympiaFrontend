@@ -6,6 +6,7 @@ import {connect} from "react-redux"
 import {attemptLogin, logout} from './actions/userActions'
 import store from './store';
 import { redirect } from './actions/redirectActions';
+import Navigation from './Navigation';
 
 import {
   Collapse,
@@ -39,6 +40,7 @@ class Dashboard extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.logout = this.logout.bind(this);
+
   }
 
   handleChange(event) {
@@ -63,12 +65,11 @@ class Dashboard extends Component {
   render() {
 
     return (
-      <div>  <Container>
+      <div>  <Navigation/>
           <p>Welcome to the dashboard!</p>
-      
 
           <button type="submit" onClick={this.logout}>Logout</button>
-    </Container>  </div>
+            </div>
     )
   }
 }

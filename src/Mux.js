@@ -8,6 +8,8 @@ import store from './store';
 import Login from "./Login";
 import CreateUser from "./CreateUser";
 import Dashboard from "./Dashboard";
+import NewArena from "./NewArena";
+import CreateEvent from "./CreateEvent";
 
 
 function mapStateToProps(state) {
@@ -31,6 +33,14 @@ class Mux extends Component {
                 case "CREATE_USER": 
                 return (
                     <div><CreateUser/></div>
+                )
+                case "CREATE_ARENA": 
+                return (
+                    <div><NewArena/></div>
+                )
+                case "CREATE_EVENT": 
+                return (
+                    <div><CreateEvent/></div>
                 )
                 case "DASHBOARD": 
                 return (
