@@ -10,7 +10,8 @@ import {redirect} from './actions/redirectActions';
 import Button from '@material-ui/core/Button';
 import { getAllArenas } from './actions/arenaActions';
 
-import { getAllEvents } from './actions/eventActions';
+import { getAllEvents, getMyEvents } from './actions/eventActions';
+import { getAllSecurity } from './actions/securityActions';
 
 function mapStateToProps(state) {
   return {
@@ -39,8 +40,9 @@ class Login extends Component {
   handleSubmit(event) {
     getAllArenas()
     getAllEvents()
+    getAllSecurity()
     attemptLogin(this.state.username, this.state.password)
-   
+    
     event.preventDefault();
   }
 

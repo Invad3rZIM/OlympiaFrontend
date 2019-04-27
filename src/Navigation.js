@@ -8,7 +8,9 @@ import store from './store';
 import { redirect } from './actions/redirectActions';
 
 import { getAllEvents } from './actions/eventActions';
-import PurchaseTickets from './PurchaseTickets.js'
+import PurchaseTickets from './PurchaseTickets.js';
+import MyEvents from './MyEvents.js';
+import OfficerPage from './OfficerPage.js';
 
 import {
   Collapse,
@@ -43,6 +45,11 @@ class Navigation extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirectNewArena = this.redirectNewArena.bind(this);
     this.redirectNewEvent = this.redirectNewEvent.bind(this);
+    this.logout = this.logout.bind(this);
+  }
+
+  logout(event) {
+    redirect("LOGIN")
   }
 
   handleChange(event) {
@@ -76,6 +83,7 @@ class Navigation extends Component {
             <div>  
                 <p>This is for public!</p>
                 <PurchaseTickets></PurchaseTickets>
+                <MyEvents></MyEvents>
                 </div>
             )
             break
@@ -86,6 +94,7 @@ class Navigation extends Component {
                     <p> This is for staff</p>
 
                 <PurchaseTickets></PurchaseTickets>
+                <MyEvents></MyEvents>
                 </div>
             )
              break
@@ -110,7 +119,7 @@ break
                     </div>
                 )
                 break
-                case "security" : 
+                case "guard" : 
                 var s = (
                     <div>
                         <p> This is for security</p>
@@ -121,6 +130,8 @@ break
                 var s = (
                     <div>
                         <p> This is for officers</p>
+                        <OfficerPage></OfficerPage>
+                
                     </div>
                 )
 
@@ -132,6 +143,9 @@ break
 
       return (
         <div>
+
+<button type="submit" onClick={this.logout}>Logout</button>
+            
         {s}
         <p> End of navigation </p><br/><br/>
         </div>

@@ -1,6 +1,7 @@
 import store from "../store";
 import { redirect } from "./redirectActions";
 import Dashboard from "../Dashboard";
+import { getAllEvents, getMyEvents } from "./eventActions";
 
 export function attemptLogin(user, pass) {
     fetch('https://olympiabackend.appspot.com/users/login', {
@@ -13,6 +14,7 @@ export function attemptLogin(user, pass) {
             password: pass
         }),
         }).then((response) => response.json()).then((responseJson) => {
+            getMyEvents(user)
             store.dispatch((dispatch) =>
             {
                 dispatch({type:"ATTEMPT_LOGIN", payload:{username: user, key: responseJson.Key, firstname : responseJson.First, lastname : responseJson.Last, usertype: responseJson.UserType}})
@@ -20,6 +22,7 @@ export function attemptLogin(user, pass) {
             })  
          if (responseJson.Key != 0 ) {
             redirect("DASHBOARD")
+            getMyEvents(user)
          }
         }).catch((error) => {
         });
@@ -53,6 +56,8 @@ export function createUser(first, last, user, pass, type) {
                 }),
                 }).then((response) => response.json()).then((responseJson) => {
                 
+                    getAllEvents()
+                    
                 store.dispatch((dispatch) =>
                 {
                     dispatch({type:"CREATE_USER", payload:{username: user, key: responseJson.Key, firstname : first, lastname : last, usertype: responseJson.UserType}})

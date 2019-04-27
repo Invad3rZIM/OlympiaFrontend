@@ -33,9 +33,10 @@ export function attemptCreateEvent(name, duration, outdoors, aquatic, track, fie
 
                     console.log("777    " + responseJson.Capacity);
                     console.log("event successfully created!")
+                
 
 
-                    if(responseJson.Duration > 0) {
+                    if(responseJson.Name != "") {
                      getAllEvents()   
                     }
 
@@ -77,6 +78,87 @@ export function getAllEvents() {
                 })
 
 }
+
+export function getMyEvents(user) {
+    var x = ""
+
+            fetch('https://olympiabackend.appspot.com/event/mine', {
+                method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    username : user
+                }),
+                }).then((response) => response.json()).then((responseJson) => {
+                    console.log( responseJson.Registered)
+
+                    x = responseJson.Registered
+
+
+            store.dispatch({type:"MY_EVENT_LIST", payload:{myEvents : x}})
+                    
+                }).catch((error) => {
+                    console.log("XXX" + error)
+                    //if event params are empty?
+                })
+
+}
+
+
+export function schedule(event, day, start, duration) {
+    var x = ""
+
+            fetch('https://olympiabackend.appspot.com/event/schedule/open', {
+                method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    event: event,
+                    day: Number(day),
+                    start: Number(start),
+                    duration: Number(duration)
+                }),
+                }).then((response) => response.json()).then((responseJson) => {
+
+                    if(responseJson.CanSchedule) {
+
+
+                        fetch('https://olympiabackend.appspot.com/event/schedule', {
+                            method: 'POST',
+                            headers: {
+                            'Accept': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                event: event,
+                                day: Number(day),
+                                start: Number(start),
+                                duration: Number(duration)
+                            }),
+                            }).then((response) => response.json()).then((responseJson) => {
+            
+            
+                            }).catch((error) => {
+                                //if event params are empty?
+                            })
+
+
+
+                    }
+
+                    getAllEvents()
+                    console.log(responseJson)
+                    x = responseJson.AllEvents
+
+                    
+                }).catch((error) => {
+                    console.log("XXX" + error)
+                    //if event params are empty?
+                })
+
+}
+
 
 export function eventPair(e, a) {
     fetch('https://olympiabackend.appspot.com/event/pair', {
@@ -135,7 +217,6 @@ export function eventPublicPrice(e, a) {
         
             getAllEvents()
         }).catch((error) => {
-            console.log("XXX" + error)
             //if event params are empty?
         })
 
@@ -155,8 +236,8 @@ export function buyTicket(e, user, count, free) {
             free: free
         }),
         }).then((response) => response.json()).then((responseJson) => {
-            console.log("Stop tripping" + responseJson.Registered)
             getAllEvents()
+            getMyEvents(user)
         }).catch((error) => {
             //if event params are empty?
         })

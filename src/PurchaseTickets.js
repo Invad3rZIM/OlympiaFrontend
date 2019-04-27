@@ -23,6 +23,18 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
 
+function weekday(num) {
+  switch(num % 7) {
+      case 0: return "Sunday"
+      case 1: return "Monday"
+      case 2: return "Tuesday"
+      case 3: return "Wednesday"
+      case 4: return "Thursday"
+      case 5: return "Friday"
+      case 6: return "Saturday"
+  }
+}
+
 function mapStateToProps(state) {
   return {
     event: state.event,
@@ -40,17 +52,20 @@ var taffPrice = []
 var publicPrice = []
 var count = []
 
-function getData(name, arena, current, capacity, ticketPrice, staffPrice, day, start, end) {
+function getData(name, arena, current, capacity, ticketPrice, staffPrice, day, start, duration) {
   id += 1;
 
   dict[name] = 0;
   taffPrice[name] = staffPrice
   publicPrice[name] = publicPrice
+  start = parseInt(start/60) * 100 + start%60
+  duration = parseInt(duration / 60 ) * 100 + duration%60
+
 
   if(arena == null || arena.Name == "") {
-    return { id, name, arena : "TBD", current, capacity, ticketPrice, staffPrice, day, start, end};
+    return { id, name, arena : "TBD", current, capacity, ticketPrice, staffPrice, day, start, duration};
   } else {
-    return { id, name, arena : arena.Name, current, capacity, ticketPrice, staffPrice, day, start, end };
+    return { id, name, arena : arena.Name, current, capacity, ticketPrice, staffPrice, day, start, duration };
   }
  }
 
@@ -112,7 +127,7 @@ class PurchaseTickets extends Component {
   buyPublicTickets(event) {
     console.log(this.state.event)
     var n = this.state.event;
-    buyTicket(n, this.props.user.username, count[n], "off")
+    buyTicket(n, this.props.user.username, publicPrice[n], "off")
 
     event.preventDefault();
   }
@@ -150,8 +165,7 @@ class PurchaseTickets extends Component {
       var events = this.props.event.allEvents
       var buy = "Buy"
       //need to sort everything. will do that later.
-      var listItems = events.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice,0,0,0)) //this render needs to be completed
-
+      var listItems = events.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration)) //this r
       //ensure taht the tickets purchased must be positive integers = a rob task
       if (this.props.user.usertype == "public") { //public stuff
      
@@ -205,6 +219,8 @@ class PurchaseTickets extends Component {
             <TableCell align="right">Arena</TableCell>
             <TableCell align="right">Tickets Remaining</TableCell>
 
+            <TableCell align="right">Event Day</TableCell>
+            <TableCell align="right">Event Start</TableCell>
             <TableCell align="right">Event Duration</TableCell>
             <TableCell align="right">(Staff) Ticket Price</TableCell>
             <TableCell></TableCell>
@@ -220,8 +236,9 @@ class PurchaseTickets extends Component {
               
               <TableCell align="right">{row.capacity - row.current}</TableCell>
 
-
-  <TableCell align="right">{row.day}</TableCell>
+              <TableCell align="right">{weekday(row.day)}</TableCell>
+            <TableCell align="right">{row.start}</TableCell>
+            <TableCell align="right">{row.duration}</TableCell>
 
               
               <TableCell align="right">$ {row.staffPrice} x <Input type="number" name={row.name}  onBlur={this.calcPrice} align="center" placeholder={"" + 0}  pattern="\d+" min="0" ></Input> = <span id={ row.name + "x"}>{dict[row.name]}</span> </TableCell>
