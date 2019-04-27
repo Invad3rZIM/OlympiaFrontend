@@ -21,12 +21,14 @@ import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select';
 
 import MenuItem from '@material-ui/core/MenuItem';
+import { updateSecurity } from './actions/securityActions';
 
 
 function mapStateToProps(state) {
   return {
     event: state.event,
-    arena: state.arena
+    arena: state.arena,
+    security : state.security
   };
 }
 
@@ -34,17 +36,22 @@ function mapStateToProps(state) {
 let id = 0;
 let set = new Set();
 
-function getData(name, arena, current, capacity, ticketPrice, staffPrice, day, start, duration) {
+
+function overview(first, last, username, shift) {
+    return {first, last, username, shift}
+}
+
+function getData(name, arena, current, capacity, ticketPrice, staffPrice, day, start, duration, currentGuards, needed) {
   id += 1;
 
   start = parseInt(start/60) * 100 + start%60
   duration = parseInt(duration / 60 ) * 100 + duration%60
-  var needed = 4
+ 
 
   if(arena == null || arena.Name == "") {
-    return { id, name, arena : "Select Arena", current, capacity, ticketPrice, staffPrice, day, start, duration, arenaLabel : "" + id, needed };
+    return { id, name, arena : "Select Arena", current, capacity, ticketPrice, staffPrice, day, start, duration, arenaLabel : "" + id, needed , currentGuards};
   } else {
-    return { id, name, arena : arena.Name, current, capacity, ticketPrice, staffPrice, duration, day, start, duration, arenaLabel : "" + id, needed };
+    return { id, name, arena : arena.Name, current, capacity, ticketPrice, staffPrice, duration, day, start, duration, arenaLabel : "" + id, needed , currentGuards};
   }
  }
 
@@ -58,10 +65,6 @@ class OfficerPage extends Component {
         password: '',
         data : []
       };
-
-    this.durations = []
-    this.startTimes = []
-    this.days = []
 
     this.needed = []
 
@@ -77,12 +80,6 @@ class OfficerPage extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
-  handleArenaChange(event) {
-    eventPair(event.target.name, event.target.value)
-    getAllEvents()
-  }
-
-
   handleSubmit(event) {
 
     event.preventDefault();
@@ -90,24 +87,26 @@ class OfficerPage extends Component {
 
   
   handleNeededChange( event) {
+      console.log(event.target.name)
       if (event.target.value != null)
         this.needed[event.target.name] = event.target.value
   }
 
 
-  updateGuards(eventName, needed, event) {
-      console.log(eventName + " " +  needed + " ")
+  updateGuards(eventName,needed, event) {
+
+        if(!(eventName in this.needed)) {
+            updateSecurity(eventName, needed)
+        } else
+            updateSecurity(eventName, this.needed[eventName])
   }
+
 
   render() {
       var events = this.props.event.allEvents
 
-      var arenas = this.props.arena.allArenas
-
-      var arenaOptions = arenas.map((d) => (<MenuItem key={d.Name}  value={d.Name}>{d.Name}</MenuItem>))
-
       //need to sort everything. will do that later.
-      var listItems = events.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration)) //this render needs to be completed
+      var listItems = events.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration, d.CurrentSecurity, d.SecurityNeeded)) //this render needs to be completed
 
 
   var t = (
@@ -129,30 +128,50 @@ class OfficerPage extends Component {
         <TableBody>
           {listItems.map(row =>
               (
-
-            
             <TableRow key={row.id}>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">
-              <Select
-
-            value={row.arena}
-            onChange={this.handleArenaChange}
-            input={<Input name={row.name} id="arena-helper" />}
-          >
-          {arenaOptions}
-          </Select>
-            
+              <TableCell align="center">
+             {row.arena}
             </TableCell>
               <TableCell align="center">{row.current}</TableCell>
               <TableCell align="center">{row.capacity}</TableCell>
-              <TableCell align="center">{row.capacity}</TableCell>
+              <TableCell align="center">{row.currentGuards}</TableCell>
 
-                <TableCell align="center"><Input onBlur={(e) => this.handleNeededChange(e)} name={"" +row.name} placeholder={""+ row.needed}></Input></TableCell>
+            <TableCell align="center"><Input onChange={ this.handleNeededChange} name={row.name} placeholder={""+ row.needed}></Input></TableCell>
               <TableCell align="center"><Button onClick={(e) => this.updateGuards(row.name, row.needed, e)}>Update</Button></TableCell>
 
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Paper>
+  );
+
+  let guards = this.props.security.allSecurity.map((s) => overview(s.First, s.Last, s.Username, s.Shifts))
+
+  var guardSchedules = (
+    <Paper>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell align="center">Username</TableCell>
+            <TableCell align="center">First Name</TableCell>
+            <TableCell align="center">Last Name</TableCell>
+            <TableCell align="center">Shifts</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {guards.map(row =>
+              (
+            <TableRow key={row.username}>
+           
+           <TableCell align="center">{row.username}</TableCell>
+            <TableCell align="center">{row.first}</TableCell>
+            <TableCell align="center">{row.last}</TableCell>
+            <TableCell align="center">{row.shift}</TableCell>
+              
             </TableRow>
           ))}
         </TableBody>
@@ -163,7 +182,13 @@ class OfficerPage extends Component {
       return (
         <div>
             <p>This is a view of all the events currently in the roster!</p>
-        { t}
+            { t}
+            
+            <br/>
+            <br/>
+            <br/>
+
+            {guardSchedules}
         </div>
       );
   }

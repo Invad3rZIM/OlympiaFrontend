@@ -105,6 +105,8 @@ class Navigation extends Component {
                         <p> This is for athletes</p>
 
                 <PurchaseTickets></PurchaseTickets>
+
+                <MyEvents></MyEvents>
                     </div>
                 )
 
@@ -136,8 +138,6 @@ break
                 )
 
                 break;
-
-              
 
       }
 

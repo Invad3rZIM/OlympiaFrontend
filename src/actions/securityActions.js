@@ -1,10 +1,13 @@
 import store from "../store";
 import { redirect } from "./redirectActions";
 import Dashboard from "../Dashboard";
+import { getAllEvents } from "./eventActions";
 
 export function updateSecurity(event, needed) {
 
-    console.log(event + "  " + needed)
+   
+    console.log("KKK" +  event + "  " + needed)
+
 
     fetch('https://olympiabackend.appspot.com/security/update', {
         method: 'POST',
@@ -12,16 +15,18 @@ export function updateSecurity(event, needed) {
         'Accept': 'application/json',
         },
         body: JSON.stringify({
-            event : event,
-            needed : needed
+            event: event,
+            needed : Number(needed)
         }),
         }).then((response) => response.json()).then((responseJson) => {
-           getAllSecurity()
+            getAllSecurity()
+            getAllEvents()
+            
+        }).catch((error) => {
+            console.log("XXX" + error)
+            //if event params are empty?
+        })
 
-            }
-        ).catch((error) => {
-            console.log("hhh    " + error);
-        });
 }
 
 
