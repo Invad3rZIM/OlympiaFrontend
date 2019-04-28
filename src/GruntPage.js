@@ -103,21 +103,13 @@ class GruntPage extends Component {
 
   render() {
       var events = this.props.event.allEvents
-
-      var e = {}
-
       
       //filter for shifts matching the actual user
       events = events.filter((e) => {
         let guards = e.CurrentGuards
         
-        console.log(guards)
-
         for(var i = 0; i < guards.length; i++ ) {
-
-
             if(guards[i].Username == this.props.user.username) {
-         
                 return true
             }
         }
