@@ -11,6 +11,7 @@ import { getAllEvents } from './actions/eventActions';
 import PurchaseTickets from './PurchaseTickets.js';
 import MyEvents from './MyEvents.js';
 import OfficerPage from './OfficerPage.js';
+import AthleteBio from './AthleteBio.js';
 
 import {
   Collapse,
@@ -25,6 +26,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+import ViewAthleteBio from './ViewAthleteBio';
 
 function mapStateToProps(state) {
   return {
@@ -84,6 +86,7 @@ class Navigation extends Component {
                 <p>This is for public!</p>
                 <PurchaseTickets></PurchaseTickets>
                 <MyEvents></MyEvents>
+                <ViewAthleteBio></ViewAthleteBio>
                 </div>
             )
             break
@@ -95,6 +98,7 @@ class Navigation extends Component {
 
                 <PurchaseTickets></PurchaseTickets>
                 <MyEvents></MyEvents>
+                <ViewAthleteBio></ViewAthleteBio>
                 </div>
             )
              break
@@ -105,6 +109,8 @@ class Navigation extends Component {
                         <p> This is for athletes</p>
 
                 <PurchaseTickets></PurchaseTickets>
+
+                <AthleteBio></AthleteBio>
                     </div>
                 )
 
