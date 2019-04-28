@@ -8,6 +8,9 @@ import store from './store';
 import {redirect} from './actions/redirectActions';
 
 import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import FormLabel from '@material-ui/core/FormLabel';
+import { withStyles} from '@material-ui/core/styles';
 import { getAllArenas } from './actions/arenaActions';
 
 import { getAllEvents, getMyEvents } from './actions/eventActions';
@@ -38,12 +41,17 @@ class Login extends Component {
   }
 
   handleSubmit(event) {
+
+    if (this.state.username.length > 0 && this.state.password.length > 0) {
+
+      console.log("attempt login")
     getAllArenas()
     getAllEvents()
     getAllSecurity()
     attemptLogin(this.state.username, this.state.password)
     
     event.preventDefault();
+    }
   }
 
   logout(event) {
@@ -53,16 +61,18 @@ class Login extends Component {
   createUser() {
     redirect("CREATE_USER")
   }
-
+  
   render() {
     return (
-      <div>
-        <form>
+      <div className="login-block">
+        <form className = "login-block__form">
         <br/> <br/>
-      <input type="text" placeholder="username" name="username" onChange ={this.handleChange}></input>
-        <input type="password" placeholder="password" name="password" onChange={this.handleChange}></input>
-<br/>
-        <Button variant="contained" color="primary" onClick={this.handleSubmit} >Login</Button>
+        <p>Login</p>
+      <Input type="text" placeholder="username"  name="username" onChange ={this.handleChange}></Input>
+      <br></br>  
+      <Input type="password" placeholder="password" name="password" onChange={this.handleChange}></Input>
+<br/><br></br>
+        <Button  variant="contained" color="primary" onClick={this.handleSubmit} >Login</Button>
         <br/> <br/> <br/>
         <Button color="ff00ff" variant="contained" onClick={this.createUser} > New User? </Button>
         </form>
