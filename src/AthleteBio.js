@@ -4,6 +4,7 @@ import './App.css'
 import {connect} from "react-redux"
 
 import {attemptLogin, logout} from './actions/userActions'
+import {updateBio} from './actions/athleteActions'
 import store from './store';
 import {redirect} from './actions/redirectActions';
 
@@ -11,14 +12,15 @@ import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
-import { getAllArenas } from './actions/arenaActions';
+import { getAllAthletes } from './actions/athleteActions';
 
 import { getAllEvents, getMyEvents } from './actions/eventActions';
 import { getAllSecurity } from './actions/securityActions';
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    athlete: state.athlete
   };
 }
 
@@ -29,7 +31,15 @@ let heightMap = { "feet": 0, "inches": 0}
 let height = 0
 let weight = 0
 let bio = "Bio"
+let username = ""
 
+let myBio = {}
+
+function myProfile(e, x) {
+  if (e.Username == x) {
+    myBio = e
+  }
+}
 
 
 class AthleteBio extends Component {
@@ -96,8 +106,11 @@ class AthleteBio extends Component {
         +"\n weight: " + weight
         +"\n bio: " + bio )
       
+    updateBio(username, height, weight, sex, bio, age)
+    getAllAthletes()
     }
 
+    
 
   handleChange(event) {
    
@@ -112,16 +125,28 @@ class AthleteBio extends Component {
 
 
   render() {
+    username = this.props.user.username
+    
+    var s = this.props.athlete.allAthletes
 
-    //var gender = ["Male", "Female"]
-    //var genderOptions = gender.map((d) => (<MenuItem key={d}  value={d}>{d}</MenuItem>))
+    let bio = {}
+
+    for(var i = 0; i < s.length; i++) {
+
+      console.log(s[i].Username)
+      if (s[i].Username == this.props.user.username) {
+        bio = s[i]
+        break;
+      }
+    }
+
 
     return (
       <div>
       <p>This is a view of athlete's bio</p>
       <form>
       <br/> <br/>
-    <p><Input type="text" placeholder="Name" name="name" onChange ={this.handleName}></Input></p>
+    <p>{bio.First + "'s Bio!"}</p>
     <p>Sex: <Select
     // to-do default value and displaying selection
         name="Sex"
@@ -132,7 +157,7 @@ class AthleteBio extends Component {
         </Select>
 
     </p>
-    <p><Input type="text" placeholder="Age" name="age" onChange={this.handleAge}></Input></p>
+    <p>Age: <Input type="text" placeholder={"" + bio.Age} name="age" onChange={this.handleAge}></Input></p>
     <p>Ft: <Select
     // to-do default value and displaying selection
         name="Feet"
@@ -165,8 +190,8 @@ class AthleteBio extends Component {
         </Select>
 
     </p>
-    <p><Input type="text" placeholder="Weight" name="weight" onChange={this.handleWeight}></Input></p>
-    <p><Input type="text" placeholder="Bio" name="bio" onChange={this.handleBio}></Input></p>
+    <p>Weight: <Input type="number" placeholder={""+bio.Weight} name="weight" onChange={this.handleWeight}></Input></p>
+    <p><Input type="text" placeholder={""+bio.Bio} name="bio" onChange={this.handleBio}></Input></p>
   
     <br/><br></br>
       <Button variant="contained" color="primary" onClick={this.handleSubmit}>Submit</Button>
