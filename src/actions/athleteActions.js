@@ -75,7 +75,8 @@ export function getAllAthletes() {
 
 }
 
-export function athleteToggleEvent(username, toggle, event) {
+export function athleteToggleEvent(username2, toggle, event) {
+    console.log(username2 + "  " + toggle + "  " + event)
     var x = ""
 
             fetch('https://olympiabackend.appspot.com/athlete/schedule', {
@@ -84,15 +85,16 @@ export function athleteToggleEvent(username, toggle, event) {
                 'Accept': 'application/json',
                 },
                 body: JSON.stringify({
-                    username : username,
-                    toggle: toggle,
-                    event : event
+                    username : "" + username2,
+                    toggle: "" + toggle,
+                    event : "" + event
                 }),
                 }).then((response) => response.json()).then((responseJson) => {
                     getAllAthletes()
 
                 }).catch((error) => {
                     //if event params are empty?
+                    console.log(error)
                 })
 
 }
