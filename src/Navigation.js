@@ -13,6 +13,7 @@ import MyEvents from './MyEvents.js';
 import OfficerPage from './OfficerPage.js';
 import AthleteBio from './AthleteBio.js';
 import GruntPage from './GruntPage.js';
+import AthleteScheduler from './AthleteScheduler.js';
 
 import {
   Collapse,
@@ -109,6 +110,7 @@ class Navigation extends Component {
                     <div>
                         <p> This is for athletes</p>
 
+               <AthleteScheduler></AthleteScheduler>
                 <PurchaseTickets></PurchaseTickets>
 
                 <AthleteBio></AthleteBio>
