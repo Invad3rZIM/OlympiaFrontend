@@ -140,6 +140,7 @@ class AthleteBio extends Component {
       }
     }
 
+
     return (
       <div>
       <p>This is a view of athlete's bio</p>

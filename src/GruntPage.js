@@ -37,21 +37,18 @@ function mapStateToProps(state) {
 let id = 0;
 let set = new Set();
 
-function getData(name, arena, day, start, duration) {
+function getData(name, arena, current, capacity, ticketPrice, staffPrice, day, start, duration, currentGuards, needed) {
   id += 1;
 
   start = parseInt(start/60) * 100 + start%60
   duration = parseInt(duration / 60 ) * 100 + duration%60
+ 
 
-
-  if (arena == null ) {
-    arena = "TBD"
+  if(arena == null || arena.Name == "") {
+    return { id, name, arena : "Select Arena", current, capacity, ticketPrice, staffPrice, day, start, duration, arenaLabel : "" + id, needed , currentGuards};
   } else {
-    arena = arena.Name
+    return { id, name, arena : arena.Name, current, capacity, ticketPrice, staffPrice, duration, day, start, duration, arenaLabel : "" + id, needed , currentGuards};
   }
-
-  return { id, name, arena ,  day, start, duration};
-
  }
 
 
@@ -104,27 +101,19 @@ class GruntPage extends Component {
   render() {
       var events = this.props.event.allEvents
 
-      var e = {}
-
-      
       //filter for shifts matching the actual user
       events = events.filter((e) => {
         let guards = e.CurrentGuards
-        
-        console.log(guards)
 
-        for(var i = 0; i < guards.length; i++ ) {
-
-
+        for(var i = 0; i < guards.length; i++) {
             if(guards[i].Username == this.props.user.username) {
-         
                 return true
             }
         }
         return false
       })
 
-      events = events.map(d =>getData(d.Name, d.Arena, d.Day, d.StartTime, d.Duration)) //this render needs to be completed)
+      events = events.map(d =>getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration)) //this render needs to be completed)
 
   var guardSchedules = (
     <Paper>
