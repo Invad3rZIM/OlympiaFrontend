@@ -11,6 +11,7 @@ import { getAllEvents } from './actions/eventActions';
 import PurchaseTickets from './PurchaseTickets.js';
 import MyEvents from './MyEvents.js';
 import OfficerPage from './OfficerPage.js';
+import GruntPage from './GruntPage.js';
 
 import {
   Collapse,
@@ -125,6 +126,8 @@ break
                 var s = (
                     <div>
                         <p> This is for security</p>
+                        <GruntPage></GruntPage>
+                        <p>HELLO!</p>
                     </div>
                 )
                 break

@@ -28,18 +28,14 @@ function mapStateToProps(state) {
   return {
     event: state.event,
     arena: state.arena,
-    security : state.security
+    security : state.security,
+    user: state.user
   };
 }
 
 
 let id = 0;
 let set = new Set();
-
-
-function overview(first, last, username, shift) {
-    return {first, last, username, shift}
-}
 
 function getData(name, arena, current, capacity, ticketPrice, staffPrice, day, start, duration, currentGuards, needed) {
   id += 1;
@@ -105,72 +101,44 @@ class GruntPage extends Component {
   render() {
       var events = this.props.event.allEvents
 
-      //need to sort everything. will do that later.
-      var listItems = events.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration, d.CurrentSecurity, d.SecurityNeeded)) //this render needs to be completed
+      //filter for shifts matching the actual user
+      events = events.filter((e) => {
+        let guards = e.CurrentGuards
 
+        for(var i = 0; i < guards.length; i++) {
+            if(guards[i].Username == this.props.user.username) {
+                return true
+            }
+        }
+        return false
+      })
 
-  var t = (
-    <Paper>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Event</TableCell>
-            <TableCell align="right">Arena</TableCell>
-            <TableCell align="right">Registration Count</TableCell>
-            <TableCell align="right">Event Capacity</TableCell>
-
-            <TableCell align="right">Current Security</TableCell>
-            <TableCell align="right">Preferred Count</TableCell>
-
-            <TableCell align="right">Get Security</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {listItems.map(row =>
-              (
-            <TableRow key={row.id}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="center">
-             {row.arena}
-            </TableCell>
-              <TableCell align="center">{row.current}</TableCell>
-              <TableCell align="center">{row.capacity}</TableCell>
-              <TableCell align="center">{row.currentGuards}</TableCell>
-
-            <TableCell align="center"><Input onChange={ this.handleNeededChange} name={row.name} placeholder={""+ row.needed}></Input></TableCell>
-              <TableCell align="center"><Button onClick={(e) => this.updateGuards(row.name, row.needed, e)}>Update</Button></TableCell>
-
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
-  );
-
-  let guards = this.props.security.allSecurity.map((s) => overview(s.First, s.Last, s.Username, s.Shifts))
+      events = events.map(d =>getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration)) //this render needs to be completed)
 
   var guardSchedules = (
     <Paper>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell align="center">Username</TableCell>
-            <TableCell align="center">First Name</TableCell>
-            <TableCell align="center">Last Name</TableCell>
-            <TableCell align="center">Shifts</TableCell>
+            <TableCell align="center">Shift ID</TableCell>
+            <TableCell align="center">Event</TableCell>
+            <TableCell align="center">Arena</TableCell>
+            <TableCell align="center">Day</TableCell>
+            <TableCell align="center">Start</TableCell>
+            <TableCell align="center">Duration</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {guards.map(row =>
+          {events.map(row =>
               (
-            <TableRow key={row.username}>
+            <TableRow key={row.id}>
            
-           <TableCell align="center">{row.username}</TableCell>
-            <TableCell align="center">{row.first}</TableCell>
-            <TableCell align="center">{row.last}</TableCell>
-            <TableCell align="center">{row.shift}</TableCell>
+           <TableCell align="center">{row.id}</TableCell>
+           <TableCell align="center">{row.name}</TableCell>
+            <TableCell align="center">{row.arena}</TableCell>
+            <TableCell align="center">{row.day}</TableCell>
+            <TableCell align="center">{row.start}</TableCell>
+            <TableCell align="center">{row.duration}</TableCell>
               
             </TableRow>
           ))}
@@ -181,11 +149,8 @@ class GruntPage extends Component {
 
       return (
         <div>
-            <p>This is a view of all the events currently in the roster!</p>
-            { t}
-            
-            <br/>
-            <br/>
+            <p>Scheduled Shifts</p>      
+           
             <br/>
 
             {guardSchedules}

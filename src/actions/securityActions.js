@@ -4,11 +4,6 @@ import Dashboard from "../Dashboard";
 import { getAllEvents } from "./eventActions";
 
 export function updateSecurity(event, needed) {
-
-   
-    console.log("KKK" +  event + "  " + needed)
-
-
     fetch('https://olympiabackend.appspot.com/security/update', {
         method: 'POST',
         headers: {
@@ -23,10 +18,11 @@ export function updateSecurity(event, needed) {
             getAllEvents()
             
         }).catch((error) => {
-            console.log("XXX" + error)
-            //if event params are empty?
+            getAllSecurity()
+            getAllEvents()
         })
 
+        
 }
 
 
