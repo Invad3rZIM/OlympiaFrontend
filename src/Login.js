@@ -12,6 +12,7 @@ import { getAllArenas } from './actions/arenaActions';
 
 import { getAllEvents, getMyEvents } from './actions/eventActions';
 import { getAllSecurity } from './actions/securityActions';
+import { getAllAthletes } from './actions/athleteActions';
 
 function mapStateToProps(state) {
   return {
@@ -41,6 +42,7 @@ class Login extends Component {
     getAllArenas()
     getAllEvents()
     getAllSecurity()
+    getAllAthletes()
     attemptLogin(this.state.username, this.state.password)
     
     event.preventDefault();
