@@ -6,6 +6,8 @@ import {connect} from "react-redux"
 import {attemptLogin, createUser, logout} from './actions/userActions'
 import store from './store';
 import { redirect } from './actions/redirectActions';
+import { Button } from '@material-ui/core';
+import { Input } from '@material-ui/core';
 
 function mapStateToProps(state) {
   return {
@@ -55,20 +57,25 @@ class CreateUser extends Component {
       var e = (<p>Error! That username is already in use!</p>)
     }
     const s = (
-      <div>
+      <div className= "create-user-block">
         {e}
-      <input type="text" placeholder="first name" name="firstname" onChange ={this.handleChange}></input>
+        <div className= "create-user-block__form">
+        <p>Create user</p>
+      <Input type="text" placeholder="first name" name="firstname" onChange ={this.handleChange}></Input>
+      <br></br>
+      <Input type="text" placeholder="last name" name="lastname" onChange ={this.handleChange}></Input>
+      <br></br>
+      <Input type="text" placeholder="username" name="username" onChange ={this.handleChange}></Input>
+      <br></br>
+      <Input type="password" placeholder="password" name="password" onChange ={this.handleChange}></Input>
+      <br></br>
+      <Input type="password" placeholder="confirm password password" name="confirm" onChange ={this.handleChange}></Input>
+      <br></br>
+      <Input type="text" placeholder="usertype" name="usertype" onChange ={this.handleChange}></Input>
 
-      <input type="text" placeholder="last name" name="lastname" onChange ={this.handleChange}></input>
-
-      <input type="text" placeholder="username" name="username" onChange ={this.handleChange}></input>
-
-      <input type="password" placeholder="password" name="password" onChange ={this.handleChange}></input>
-      <input type="password" placeholder="confirm password password" name="confirm" onChange ={this.handleChange}></input>
-      <input type="text" placeholder="usertype" name="usertype" onChange ={this.handleChange}></input>
-
-
-      <button type="submit" onClick={this.createUser}>Create User</button>
+      <br></br> <br></br>
+      <Button color="primary" variant="contained" onClick={this.createUser}>Create User</Button>
+      </div>
       </div>
     )
 

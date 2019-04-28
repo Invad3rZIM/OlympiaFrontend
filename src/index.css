@@ -8,6 +8,51 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+  .login-block {
+    position: fixed;
+    border-radius: 25px;
+    min-width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    background-color: rgb(50, 115, 220, 0.5);
+  }
+
+
+.login-block__form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+.login-block__input {
+  padding-top: 10px;
+}
+
+.create-user-block {
+  position: fixed;
+  border-radius: 25px;
+  min-width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  background-color: rgb(50, 115, 220, 0.5);
+}
+
+.create-user-block__form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
