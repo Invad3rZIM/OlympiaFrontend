@@ -7,6 +7,7 @@ import arena from "./arenaReducer"
 import event from "./eventReducer"
 import security from "./securityReducer"
 import athlete from "./athleteReducer"
+import internal from "./internalReducer"
 
 export default combineReducers( {
     user,
@@ -15,5 +16,6 @@ export default combineReducers( {
     arena,
     event,
     athlete,
-    security
+    security,
+    internal
 })

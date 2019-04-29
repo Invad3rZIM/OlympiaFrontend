@@ -11,6 +11,7 @@ import { getAllEvents } from './actions/eventActions';
 import PurchaseTickets from './PurchaseTickets.js';
 import MyEvents from './MyEvents.js';
 import OfficerPage from './OfficerPage.js';
+<<<<<<< Updated upstream
 
 import {
   Collapse,
@@ -25,6 +26,15 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+=======
+import AthleteBio from './AthleteBio.js';
+import GruntPage from './GruntPage.js';
+import AthleteScheduler from './AthleteScheduler.js';
+import Navbar from './Navbar.js';
+
+import ViewAthleteBio from './ViewAthleteBio';
+import NewArena from './NewArena';
+>>>>>>> Stashed changes
 
 function mapStateToProps(state) {
   return {
@@ -67,6 +77,20 @@ class Navigation extends Component {
     redirect("CREATE_ARENA");
   }
 
+<<<<<<< Updated upstream
+=======
+
+  redirectAthleteTickets() {
+    redirect("ATHLETE_PURCHASE");
+  }
+
+
+  redirectSetBio() {
+    redirect("SET_BIO");
+  }
+
+
+>>>>>>> Stashed changes
   redirectNewEvent() {
 
     getAllEvents()
@@ -74,13 +98,30 @@ class Navigation extends Component {
   }
 
 
+<<<<<<< Updated upstream
+=======
+  redirectAutographs() {
+    redirect("SCHEDULE_SIGNING");
+  }
+
+  redirectCompetition() {
+    redirect("ATHLETE_COMPETITION");
+  }
+
+  redirectViewBio() {
+    redirect("VIEW_BIO")
+  } 
+
+
+>>>>>>> Stashed changes
   render() {
     //this needs to be formalized into an actual navigation bar
-    
-    switch(this.props.user.usertype) {
+    var user_type = this.props.user.usertype
+    switch(user_type) {
         case "public" :
             var s = (
             <div>  
+              
                 <p>This is for public!</p>
                 <PurchaseTickets></PurchaseTickets>
                 <MyEvents></MyEvents>
@@ -100,22 +141,25 @@ class Navigation extends Component {
              break
 
             case "athlete" : 
+            this.redirectCompetition();
             var s =(
                     <div>
+<<<<<<< Updated upstream
                         <p> This is for athletes</p>
 
                 <PurchaseTickets></PurchaseTickets>
                     </div>
                 )
+=======
+                    </div>
+            )
+>>>>>>> Stashed changes
 
 break
                 case "admin" : 
+                this.redirectNewArena();
                 var s = (
                     <div>
-                        <p> This is for admins</p>
-                        <p onClick={this.redirectNewArena}>Create Arena</p>
-
-                        <p onClick={this.redirectNewEvent}>Create Event</p>
                     </div>
                 )
                 break
@@ -144,8 +188,7 @@ break
       return (
         <div>
 
-<button type="submit" onClick={this.logout}>Logout</button>
-            
+        <Navbar type={user_type}></Navbar>
         {s}
         <p> End of navigation </p><br/><br/>
         </div>

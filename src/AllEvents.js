@@ -89,14 +89,18 @@ class AllEvents extends Component {
 
   handleStaffPriceChange(event) {
 
-    if(event.target.value > 0)
-    eventStaffPrice(event.target.name, event.target.value)
+    if(event.target.value > 0) {
+      var dollars = Math.round(Number(event.target.value) * 100) / 100
+      eventStaffPrice(event.target.name, dollars)
+   } 
     
   }
 
   handlePublicPriceChange(event) {
-    if(event.target.value > 0)
-    eventPublicPrice(event.target.name, event.target.value)
+    if(event.target.value > 0) {
+      var dollars = Math.round(Number(event.target.value) * 100) / 100
+      eventPublicPrice(event.target.name, dollars)
+    }
   
   }
 

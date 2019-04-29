@@ -10,7 +10,17 @@ import CreateUser from "./CreateUser";
 import Dashboard from "./Dashboard";
 import NewArena from "./NewArena";
 import CreateEvent from "./CreateEvent";
+<<<<<<< Updated upstream
 
+=======
+import AthleteSigningScheduler from './AthleteSigningScheduler';
+import AthleteScheduler from './AthleteScheduler';
+import PurchaseTickets from './PurchaseTickets.js';
+import AthleteBio from './AthleteBio.js';
+import MyEvents from './MyEvents.js';
+import Navigation from './Navigation.js';
+import ViewAthleteBio from './ViewAthleteBio';
+>>>>>>> Stashed changes
 
 function mapStateToProps(state) {
   return {
@@ -43,9 +53,42 @@ class Mux extends Component {
                     <div><CreateEvent/></div>
                 )
                 case "DASHBOARD": 
+<<<<<<< Updated upstream
                 return (
                     <div><Dashboard/></div>
                 )
+=======
+                    s =(      <div><Dashboard/></div>)
+                break
+                case "SCHEDULE_SIGNING": 
+                
+                    s =(     <div><AthleteSigningScheduler/></div>)
+                    break
+                case "ATHLETE_COMPETITION": 
+             
+                    s =(      <div><AthleteScheduler/><br/><AthleteSigningScheduler/></div>)
+                    break
+                case "SET_BIO": 
+             
+                    s =(   <div><AthleteBio/></div>)
+                    break
+                case "ATHLETE_PURCHASE": 
+            
+                    s =(   <div><PurchaseTickets/><br/><MyEvents></MyEvents></div>)
+                    break
+                case "MY_EVENTS": 
+               
+                s =(    <div><MyEvents/></div>)
+                break
+                case "VIEW_BIO":
+                console.log("mux: " + "view bio")
+                s =(    <div><ViewAthleteBio/></div>)
+                break
+        }
+
+        if (this.props.redirect.page == "LOGIN" || this.props.redirect.page == "CREATE_USER") {
+            return (<div>{s}</div>)
+>>>>>>> Stashed changes
         }
 
   }

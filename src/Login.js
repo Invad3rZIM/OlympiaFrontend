@@ -41,7 +41,12 @@ class Login extends Component {
     getAllArenas()
     getAllEvents()
     getAllSecurity()
+<<<<<<< Updated upstream
     attemptLogin(this.state.username, this.state.password)
+=======
+    getAllAthletes()
+    attemptLogin(this.state.username.toLowerCase(), this.state.password)
+>>>>>>> Stashed changes
     
     event.preventDefault();
   }
