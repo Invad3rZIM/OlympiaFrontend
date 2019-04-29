@@ -10,7 +10,11 @@ import CreateUser from "./CreateUser";
 import Dashboard from "./Dashboard";
 import NewArena from "./NewArena";
 import CreateEvent from "./CreateEvent";
-
+import AthleteSigningScheduler from './AthleteSigningScheduler';
+import AthleteScheduler from './AthleteScheduler';
+import PurchaseTickets from './PurchaseTickets.js';
+import AthleteBio from './AthleteBio.js';
+import MyEvents from './MyEvents.js';
 
 function mapStateToProps(state) {
   return {
@@ -45,6 +49,26 @@ class Mux extends Component {
                 case "DASHBOARD": 
                 return (
                     <div><Dashboard/></div>
+                )
+                case "SCHEDULE_SIGNING": 
+                return (
+                    <div><AthleteSigningScheduler/></div>
+                )
+                case "ATHLETE_COMPETITION": 
+                return (
+                    <div><AthleteScheduler/></div>
+                )
+                case "SET_BIO": 
+                return (
+                    <div><AthleteBio/></div>
+                )
+                case "ATHLETE_PURCHASE": 
+                return (
+                    <div><PurchaseTickets/></div>
+                )
+                case "MY_EVENTS": 
+                return (
+                    <div><MyEvents/></div>
                 )
         }
 

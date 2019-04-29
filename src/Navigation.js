@@ -49,6 +49,11 @@ class Navigation extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirectNewArena = this.redirectNewArena.bind(this);
     this.redirectNewEvent = this.redirectNewEvent.bind(this);
+    this.redirectAutographs = this.redirectAutographs.bind(this);
+    this.redirectCompetition = this.redirectCompetition.bind(this);
+    this.redirectSetBio = this.redirectSetBio.bind(this);
+    this.redirectAthleteTickets = this.redirectAthleteTickets.bind(this);
+    this.redirectMyEvents = this.redirectMyEvents.bind(this)
     this.logout = this.logout.bind(this);
   }
 
@@ -67,14 +72,36 @@ class Navigation extends Component {
     event.preventDefault();
   }
 
+  redirectMyEvents() {
+    redirect("MY_EVENTS")
+  }
   redirectNewArena() {
     redirect("CREATE_ARENA");
   }
+
+  redirectAthleteTickets() {
+    redirect("ATHLETE_PURCHASE");
+  }
+
+
+  redirectSetBio() {
+    redirect("SET_BIO");
+  }
+
 
   redirectNewEvent() {
 
     getAllEvents()
     redirect("CREATE_EVENT");
+  }
+
+
+  redirectAutographs() {
+    redirect("SCHEDULE_SIGNING");
+  }
+
+  redirectCompetition() {
+    redirect("ATHLETE_COMPETITION");
   }
 
 
@@ -110,13 +137,20 @@ class Navigation extends Component {
                     <div>
                         <p> This is for athletes</p>
 
-               <AthleteScheduler></AthleteScheduler>
-                <PurchaseTickets></PurchaseTickets>
+                        <p onClick={this.redirectCompetition}>Compete!</p>
 
-                <AthleteBio></AthleteBio>
-                <MyEvents></MyEvents>
+                        <p onClick={this.redirectAutographs}>Autographs</p>
+
+                        <p onClick={this.redirectSetBio}>Set Bio</p>
+
+                        <p onClick={this.redirectAthleteTickets}>Buy Tickets</p>
+
+                        <p onClick={this.redirectMyEvents}>My Events</p>
+                        
                     </div>
-                )
+
+
+            )
 
 break
                 case "admin" : 
@@ -157,7 +191,7 @@ break
 <button type="submit" onClick={this.logout}>Logout</button>
             
         {s}
-        <p> End of navigation </p><br/><br/>
+        
         </div>
       )
   }

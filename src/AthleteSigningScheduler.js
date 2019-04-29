@@ -24,7 +24,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { updateSecurity } from './actions/securityActions';
 import { formatMs } from '@material-ui/core/styles/transitions';
 import { athleteToggleEvent } from './actions/athleteActions';
-import Navigation from './Navigation.js'
+import Navigation from './Navigation.js';
 
 
 function mapStateToProps(state) {
@@ -71,7 +71,7 @@ function getData(name, arena,  day, start, duration,  flag) {
  }
 
 
-class AthleteScheduler extends Component {
+class AthleteSigningScheduler extends Component {
   constructor(props) {
     super(props);
     
@@ -165,7 +165,7 @@ for(var propName in bio) {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell align="center">Event</TableCell>
+                <TableCell align="center"></TableCell>
                 <TableCell align="center">Arena</TableCell>
                 <TableCell align="center">Day</TableCell>
                 <TableCell align="center">Start</TableCell>
@@ -198,7 +198,7 @@ for(var propName in bio) {
 
       return (
         <div>
-          <Navigation></Navigation>
+            <Navigation></Navigation>
             <p>Participatory Olympic Events</p>      
            
             <br/>
@@ -211,4 +211,4 @@ for(var propName in bio) {
 
 
 
-export default connect(mapStateToProps)(AthleteScheduler)
+export default connect(mapStateToProps)(AthleteSigningScheduler)

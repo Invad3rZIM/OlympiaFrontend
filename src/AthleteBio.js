@@ -17,6 +17,8 @@ import { getAllAthletes } from './actions/athleteActions';
 import { getAllEvents, getMyEvents } from './actions/eventActions';
 import { getAllSecurity } from './actions/securityActions';
 
+import Navigation from './Navigation.js';
+
 function mapStateToProps(state) {
   return {
     user: state.user,
@@ -132,8 +134,6 @@ class AthleteBio extends Component {
     let bio = {}
 
     for(var i = 0; i < s.length; i++) {
-
-      console.log(s[i].Username)
       if (s[i].Username == this.props.user.username) {
         bio = s[i]
         break;
@@ -142,6 +142,9 @@ class AthleteBio extends Component {
 
     return (
       <div>
+
+<Navigation></Navigation>
+
       <p>This is a view of athlete's bio</p>
       <form>
       <br/> <br/>

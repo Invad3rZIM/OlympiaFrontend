@@ -103,9 +103,10 @@ class GruntPage extends Component {
 
   render() {
       var events = this.props.event.allEvents
-      
+
       //filter for shifts matching the actual user
       events = events.filter((e) => {
+        console.log(e)
         let guards = e.CurrentGuards
         
         for(var i = 0; i < guards.length; i++ ) {
@@ -118,6 +119,10 @@ class GruntPage extends Component {
 
       events = events.map(d =>getData(d.Name, d.Arena, d.Day, d.StartTime, d.Duration)) //this render needs to be completed)
 
+      events = events.filter(d => {
+        return !d.name.startsWith("(S) - ")
+      })
+      
   var guardSchedules = (
     <Paper>
       <Table>

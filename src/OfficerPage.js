@@ -109,6 +109,10 @@ class GruntPage extends Component {
       var listItems = events.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration, d.CurrentSecurity, d.SecurityNeeded)) //this render needs to be completed
 
 
+      listItems = listItems.filter((d) => {
+        return !d.name.startsWIth("(S) - ")
+      })
+
   var t = (
     <Paper>
       <Table>

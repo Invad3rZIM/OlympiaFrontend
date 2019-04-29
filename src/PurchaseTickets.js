@@ -21,6 +21,7 @@ import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select';
 
 import MenuItem from '@material-ui/core/MenuItem';
+import Navigation from './Navigation.js';
 
 
 function weekday(num) {
@@ -167,6 +168,11 @@ class PurchaseTickets extends Component {
       //need to sort everything. will do that later.
       var listItems = events.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration)) //this r
       //ensure taht the tickets purchased must be positive integers = a rob task
+      
+      listItems = listItems.filter((d) => {
+        return !d.name.startsWith("(S) - ")
+      })
+
       if (this.props.user.usertype == "public") { //public stuff
      
   var t = (
@@ -256,6 +262,7 @@ class PurchaseTickets extends Component {
 
       return (
         <div>
+          <Navigation></Navigation>
             <p>This is a view of all the events currently available for purchase!</p>
         { t}
         </div>

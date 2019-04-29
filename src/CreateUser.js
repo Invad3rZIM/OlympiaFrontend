@@ -69,7 +69,7 @@ class CreateUser extends Component {
       <br></br>
       <Input type="password" placeholder="password" name="password" onChange ={this.handleChange}></Input>
       <br></br>
-      <Input type="password" placeholder="confirm password password" name="confirm" onChange ={this.handleChange}></Input>
+      <Input type="password" placeholder="confirm password" name="confirm" onChange ={this.handleChange}></Input>
       <br></br>
       <Input type="text" placeholder="usertype" name="usertype" onChange ={this.handleChange}></Input>
 

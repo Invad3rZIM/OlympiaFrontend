@@ -98,3 +98,81 @@ export function athleteToggleEvent(username2, toggle, event) {
                 })
 
 }
+
+
+
+export function athleteScheduleSigning(arena, user, day, start, duration) {
+    var x = ""
+
+            fetch('https://olympiabackend.appspot.com/athlete/signing/open', {
+                method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    event: "",
+                    day: Number(day),
+                    start: Number(start),
+                    duration: Number(duration)
+                }),
+                }).then((response) => response.json()).then((responseJson) => {
+
+                    if(responseJson.CanSchedule) {
+
+                        fetch('https://olympiabackend.appspot.com/athlete/signing', {
+                            method: 'POST',
+                            headers: {
+                            'Accept': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                arena: arena,
+                                username: user,
+                                day: Number(day),
+                                start: Number(start),
+                                duration: Number(duration)
+                            }),
+                            }).then((response) => response.json()).then((responseJson) => {
+            
+            
+                            }).catch((error) => {
+                                //if event params are empty?
+                            })
+
+
+
+                    }
+
+                    getAllEvents()
+                    console.log(responseJson)
+                    x = responseJson.AllEvents
+
+                    
+                }).catch((error) => {
+                    console.log("XXX" + error)
+                    //if event params are empty?
+                })
+
+}
+
+
+export function athleteSigningDrop(user, event) {
+    var x = ""
+
+            fetch('https://olympiabackend.appspot.com/athlete/signing/drop', {
+                method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    event : "" + event,
+                    username: "" + user
+                }),
+                }).then((response) => response.json()).then((responseJson) => {
+                    getAllAthletes()
+
+                }).catch((error) => {
+                    //if event params are empty?
+                    console.log(error)
+                })
+
+}

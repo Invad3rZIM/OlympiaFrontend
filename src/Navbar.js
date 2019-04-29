@@ -30,6 +30,9 @@ function NavBar(props) {
   for (var v in props.test) {
     console.log(v['link'] +  "   " + v['print'])
   }
+
+  
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
