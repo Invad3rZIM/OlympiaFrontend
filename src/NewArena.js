@@ -7,6 +7,7 @@ import {attemptCreateArena, getAllArenas} from './actions/arenaActions'
 import store from './store';
 import { redirect } from './actions/redirectActions';
 import Navigation from './Navigation';
+import ArenaTable from './ArenaTable.js'
 
 import {
   Collapse,
@@ -66,8 +67,8 @@ class NewArena extends Component {
 
     return (
         <div>
-            <Navigation/>
-
+            <ArenaTable></ArenaTable>
+            <br/><br/>
             {s}
             <form>
                 <input type="text" name="name" onChange={this.handleChange} placeholder="arena name"></input>

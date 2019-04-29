@@ -8,8 +8,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-<<<<<<< Updated upstream
-=======
 
   .login-block {
     position: fixed;
@@ -78,7 +76,6 @@ body {
 
 }
 
->>>>>>> Stashed changes
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

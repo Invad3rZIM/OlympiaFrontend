@@ -1,8 +1,8 @@
-const athleteReducer = (state={allArenas : []}, action) => {
+const athleteReducer = (state={allAthletes : []}, action) => {
     switch(action.type) {
         
-        case "ALL_ARENA_LIST" : {
-            state = {...state, allArenas : action.payload.allArenas}
+        case "ALL_ATHLETE_LIST" : {
+            state = {...state, allAthletes : action.payload.allAthletes}
         }
 
     }

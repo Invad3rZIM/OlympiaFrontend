@@ -6,14 +6,11 @@ import {connect} from "react-redux"
 import {attemptLogin, createUser, logout} from './actions/userActions'
 import store from './store';
 import { redirect } from './actions/redirectActions';
-<<<<<<< Updated upstream
-=======
 import { Button, FormControl } from '@material-ui/core';
 import { Input } from '@material-ui/core';
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import { setOption } from './actions/internalActions';
->>>>>>> Stashed changes
 
 function mapStateToProps(state) {
   return {
@@ -81,22 +78,8 @@ class CreateUser extends Component {
       var e = (<p>Error! That username is already in use!</p>)
     }
     const s = (
-      <div>
+      <div className= "create-user-block">
         {e}
-<<<<<<< Updated upstream
-      <input type="text" placeholder="first name" name="firstname" onChange ={this.handleChange}></input>
-
-      <input type="text" placeholder="last name" name="lastname" onChange ={this.handleChange}></input>
-
-      <input type="text" placeholder="username" name="username" onChange ={this.handleChange}></input>
-
-      <input type="password" placeholder="password" name="password" onChange ={this.handleChange}></input>
-      <input type="password" placeholder="confirm password password" name="confirm" onChange ={this.handleChange}></input>
-      <input type="text" placeholder="usertype" name="usertype" onChange ={this.handleChange}></input>
-
-
-      <button type="submit" onClick={this.createUser}>Create User</button>
-=======
         <div className= "create-user-block__form">
         <p>Create user</p>
       <Input type="text" placeholder="first name" name="firstname" onChange ={this.handleChange}></Input>
@@ -128,7 +111,6 @@ class CreateUser extends Component {
       <br></br> <br></br>
       <Button color="primary" variant="contained" onClick={this.createUser}>Create User</Button>
       </div>
->>>>>>> Stashed changes
       </div>
     )
 

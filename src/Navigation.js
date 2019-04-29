@@ -11,22 +11,6 @@ import { getAllEvents } from './actions/eventActions';
 import PurchaseTickets from './PurchaseTickets.js';
 import MyEvents from './MyEvents.js';
 import OfficerPage from './OfficerPage.js';
-<<<<<<< Updated upstream
-
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  Container, 
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
-=======
 import AthleteBio from './AthleteBio.js';
 import GruntPage from './GruntPage.js';
 import AthleteScheduler from './AthleteScheduler.js';
@@ -34,7 +18,6 @@ import Navbar from './Navbar.js';
 
 import ViewAthleteBio from './ViewAthleteBio';
 import NewArena from './NewArena';
->>>>>>> Stashed changes
 
 function mapStateToProps(state) {
   return {
@@ -55,6 +38,11 @@ class Navigation extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirectNewArena = this.redirectNewArena.bind(this);
     this.redirectNewEvent = this.redirectNewEvent.bind(this);
+    this.redirectAutographs = this.redirectAutographs.bind(this);
+    this.redirectCompetition = this.redirectCompetition.bind(this);
+    this.redirectSetBio = this.redirectSetBio.bind(this);
+    this.redirectAthleteTickets = this.redirectAthleteTickets.bind(this);
+    this.redirectMyEvents = this.redirectMyEvents.bind(this)
     this.logout = this.logout.bind(this);
   }
 
@@ -73,12 +61,13 @@ class Navigation extends Component {
     event.preventDefault();
   }
 
+  redirectMyEvents() {
+    redirect("MY_EVENTS")
+  }
   redirectNewArena() {
     redirect("CREATE_ARENA");
   }
 
-<<<<<<< Updated upstream
-=======
 
   redirectAthleteTickets() {
     redirect("ATHLETE_PURCHASE");
@@ -90,7 +79,6 @@ class Navigation extends Component {
   }
 
 
->>>>>>> Stashed changes
   redirectNewEvent() {
 
     getAllEvents()
@@ -98,8 +86,6 @@ class Navigation extends Component {
   }
 
 
-<<<<<<< Updated upstream
-=======
   redirectAutographs() {
     redirect("SCHEDULE_SIGNING");
   }
@@ -113,7 +99,6 @@ class Navigation extends Component {
   } 
 
 
->>>>>>> Stashed changes
   render() {
     //this needs to be formalized into an actual navigation bar
     var user_type = this.props.user.usertype
@@ -123,8 +108,7 @@ class Navigation extends Component {
             <div>  
               
                 <p>This is for public!</p>
-                <PurchaseTickets></PurchaseTickets>
-                <MyEvents></MyEvents>
+                <ViewAthleteBio></ViewAthleteBio>
                 </div>
             )
             break
@@ -136,6 +120,7 @@ class Navigation extends Component {
 
                 <PurchaseTickets></PurchaseTickets>
                 <MyEvents></MyEvents>
+                <ViewAthleteBio></ViewAthleteBio>
                 </div>
             )
              break
@@ -144,16 +129,8 @@ class Navigation extends Component {
             this.redirectCompetition();
             var s =(
                     <div>
-<<<<<<< Updated upstream
-                        <p> This is for athletes</p>
-
-                <PurchaseTickets></PurchaseTickets>
-                    </div>
-                )
-=======
                     </div>
             )
->>>>>>> Stashed changes
 
 break
                 case "admin" : 
@@ -167,6 +144,8 @@ break
                 var s = (
                     <div>
                         <p> This is for security</p>
+                        <GruntPage></GruntPage>
+                        <p>HELLO!</p>
                     </div>
                 )
                 break
@@ -181,8 +160,6 @@ break
 
                 break;
 
-              
-
       }
 
       return (
@@ -190,7 +167,7 @@ break
 
         <Navbar type={user_type}></Navbar>
         {s}
-        <p> End of navigation </p><br/><br/>
+        
         </div>
       )
   }

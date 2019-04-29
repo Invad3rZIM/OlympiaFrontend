@@ -21,6 +21,7 @@ import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select';
 
 import MenuItem from '@material-ui/core/MenuItem';
+import Navigation from './Navigation.js';
 
 
 function weekday(num) {
@@ -97,17 +98,13 @@ class MyEvents extends Component {
 
 
   render() {
-      var events = this.props.event.allEvents.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration)) //this render needs to be completed)
-
+      var events = this.props.event.allEvents.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration)) 
       var myEvents = this.props.event.myEvents
-
       var eventMap = []
 
       var keys = Object.keys(myEvents)
 
       keys.map((k) => console.log("X " + k))
-
-
       keys = keys.filter(function (k) {
         return myEvents[k] > 0
       });

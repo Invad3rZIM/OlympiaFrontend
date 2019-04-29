@@ -184,6 +184,9 @@ class AllEvents extends Component {
 
       //need to sort everything. will do that later.
       var listItems = events.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration)) //this render needs to be completed
+      listItems = listItems.filter(d => {
+        return !d.name.startsWith("(S) - ")
+      })
 
 
   var t = (
@@ -228,8 +231,8 @@ class AllEvents extends Component {
               <TableCell align="right">{row.current}</TableCell>
               <TableCell align="right">{row.capacity}</TableCell>
 
-              <TableCell align="middle">free</TableCell>
-              <TableCell align="middle">free</TableCell>
+              <TableCell align="center">free</TableCell>
+              <TableCell align="center">free</TableCell>
 
               <TableCell align="right"><Input onBlur={(e) => this.handleDayChange(row.name, e)} name={"" +row.name} placeholder={""+ row.day}></Input></TableCell>
               <TableCell align="right"><Input onBlur={(e) => this.handleStartChange(row.name, e)} name={"" +row.name} placeholder={""+ row.start}></Input></TableCell>
@@ -253,16 +256,16 @@ class AllEvents extends Component {
           </Select>
             
             </TableCell>
-              <TableCell align="right">{row.current}</TableCell>
-              <TableCell align="right">{row.capacity}</TableCell>
+              <TableCell align="center">{row.current}</TableCell>
+              <TableCell align="center">{row.capacity}</TableCell>
 
-              <TableCell align="right">$ <Input onBlur={this.handlePublicPriceChange} name={row.name} placeholder={"" + row.ticketPrice}></Input></TableCell>
-              <TableCell align="right">$ <Input onBlur={this.handleStaffPriceChange} name={row.name} placeholder={""+ row.staffPrice}></Input></TableCell>
+              <TableCell align="center">$ <Input onBlur={this.handlePublicPriceChange} name={row.name} placeholder={"" + row.ticketPrice}></Input></TableCell>
+              <TableCell align="center">$ <Input onBlur={this.handleStaffPriceChange} name={row.name} placeholder={""+ row.staffPrice}></Input></TableCell>
 
-              <TableCell align="right"><Input onBlur={(e) => this.handleDayChange(row.name, e)} name={"" +row.name} placeholder={""+ row.day}></Input></TableCell>
-              <TableCell align="right"><Input onBlur={(e) => this.handleStartChange(row.name, e)} name={"" +row.name} placeholder={""+ row.start}></Input></TableCell>
-              <TableCell align="right"><Input onBlur={(e) => this.handleDurationChange(row.name, e)} name={"" +row.name} placeholder={""+ row.duration}></Input></TableCell>
-              <TableCell align="right"><Button onClick={(e) => this.scheduleUpdate(row.name, row.day, row.start, row.duration, e)} name={"" +row.name} placeholder={""+ row.duration}>Schedule</Button></TableCell>
+              <TableCell align="center"><Input onBlur={(e) => this.handleDayChange(row.name, e)} name={"" +row.name} placeholder={""+ row.day}></Input></TableCell>
+              <TableCell align="center"><Input onBlur={(e) => this.handleStartChange(row.name, e)} name={"" +row.name} placeholder={""+ row.start}></Input></TableCell>
+              <TableCell align="center"><Input onBlur={(e) => this.handleDurationChange(row.name, e)} name={"" +row.name} placeholder={""+ row.duration}></Input></TableCell>
+              <TableCell align="center"><Button onClick={(e) => this.scheduleUpdate(row.name, row.day, row.start, row.duration, e)} name={"" +row.name} placeholder={""+ row.duration}>Schedule</Button></TableCell>
 
             </TableRow>)})}
         </TableBody>
