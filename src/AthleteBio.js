@@ -17,7 +17,6 @@ import { getAllAthletes } from './actions/athleteActions';
 import { getAllEvents, getMyEvents } from './actions/eventActions';
 import { getAllSecurity } from './actions/securityActions';
 
-import Navigation from './Navigation.js';
 
 function mapStateToProps(state) {
   return {
@@ -142,8 +141,6 @@ class AthleteBio extends Component {
 
     return (
       <div>
-
-<Navigation></Navigation>
 
       <p>This is a view of athlete's bio</p>
       <form>

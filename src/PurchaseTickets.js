@@ -262,7 +262,6 @@ class PurchaseTickets extends Component {
 
       return (
         <div>
-          <Navigation></Navigation>
             <p>This is a view of all the events currently available for purchase!</p>
         { t}
         </div>

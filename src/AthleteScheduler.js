@@ -160,6 +160,9 @@ for(var propName in bio) {
 
       events = events.map(d =>getData(d.Name, d.Arena, d.Day, d.StartTime, d.Duration, (propValue[d.Name] == null))) //this render needs to be completed)
 
+      events = events.filter(d => {
+        return !d.name.startsWith("(S) -")
+      })
       var eventTable = (
         <Paper>
           <Table>
@@ -198,7 +201,6 @@ for(var propName in bio) {
 
       return (
         <div>
-          <Navigation></Navigation>
             <p>Participatory Olympic Events</p>      
            
             <br/>

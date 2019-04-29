@@ -48,7 +48,6 @@ class CreateEvent extends Component {
       var e = (<p>Error! That username is already in use!</p>)
     }
     const s = (<div>
-      <Navigation></Navigation>
       <AllEvents></AllEvents>
       <br/>
       <br/>

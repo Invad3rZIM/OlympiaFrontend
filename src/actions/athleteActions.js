@@ -104,6 +104,7 @@ export function athleteToggleEvent(username2, toggle, event) {
 export function athleteScheduleSigning(arena, user, day, start, duration) {
     var x = ""
 
+    console.log(user + "     DD ")
             fetch('https://olympiabackend.appspot.com/athlete/signing/open', {
                 method: 'POST',
                 headers: {
@@ -113,7 +114,9 @@ export function athleteScheduleSigning(arena, user, day, start, duration) {
                     event: "",
                     day: Number(day),
                     start: Number(start),
-                    duration: Number(duration)
+                    duration: Number(duration),
+                    arena: arena,
+                    username: user
                 }),
                 }).then((response) => response.json()).then((responseJson) => {
 
@@ -129,11 +132,14 @@ export function athleteScheduleSigning(arena, user, day, start, duration) {
                                 username: user,
                                 day: Number(day),
                                 start: Number(start),
-                                duration: Number(duration)
+                                duration: Number(duration),
+                                event : ""
                             }),
                             }).then((response) => response.json()).then((responseJson) => {
             
             
+                                getAllAthletes()
+                                getAllEvents()
                             }).catch((error) => {
                                 //if event params are empty?
                             })
@@ -141,8 +147,6 @@ export function athleteScheduleSigning(arena, user, day, start, duration) {
 
 
                     }
-
-                    getAllEvents()
                     console.log(responseJson)
                     x = responseJson.AllEvents
 
@@ -170,9 +174,15 @@ export function athleteSigningDrop(user, event) {
                 }).then((response) => response.json()).then((responseJson) => {
                     getAllAthletes()
 
+                    getAllEvents()
+
                 }).catch((error) => {
                     //if event params are empty?
                     console.log(error)
+                    getAllAthletes()
+
+                    getAllEvents()
+
                 })
 
 }

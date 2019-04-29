@@ -23,7 +23,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { updateSecurity } from './actions/securityActions';
 import { formatMs } from '@material-ui/core/styles/transitions';
-import { athleteToggleEvent } from './actions/athleteActions';
+import { athleteToggleEvent, athleteScheduleSigning, athleteSigningDrop } from './actions/athleteActions';
 import Navigation from './Navigation.js';
 
 
@@ -36,8 +36,38 @@ function mapStateToProps(state) {
   };
 }
 
-let username = ""
+let a = 0;
+let b = 0;
+let c = 0;
+let user = ""
+function updateDay(e) {
+      a = e.target.value;
 
+}
+
+function updateStart(e) {
+    b = e.target.value;
+
+    b = parseInt(b/100) * 60 + b%100
+}
+
+function dropSigning(e, u) {
+    athleteSigningDrop(username, u)
+}
+
+function updateDuration(e) {
+    c = e.target.value;
+
+    c = parseInt(c/100) * 60 + c%100
+}
+
+function tryNewSigning() {
+    
+ athleteScheduleSigning(arena, username, a, b, c)   
+}
+
+let username = ""
+let arena = "Venue"
 let id = 0;
 
 function getScheduleButton(user, flag, eventName) {
@@ -95,6 +125,8 @@ class AthleteSigningScheduler extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
+
+
   handleSubmit(event) {
 
     event.preventDefault();
@@ -121,17 +153,10 @@ class AthleteSigningScheduler extends Component {
       username = this.props.user.username
       var events = this.props.event.allEvents
 
-      //filter for shifts matching the actual user
-     /* events = events.filter((e) => {
-        let guards = e.CurrentGuards
+      var arenas = this.props.arena.allArenas
 
-        for(var i = 0; i < guards.length; i++) {
-            if(guards[i].Username == this.props.user.username) {
-                return true
-            }
-        }
-        return false
-      })*/
+      var arenaOptions = arenas.map((d) => (<MenuItem key={d.Name}  value={d.Name}>{d.Name}</MenuItem>))
+
       var s = this.props.athlete.allAthletes
 
       let bio = {}
@@ -164,13 +189,36 @@ for(var propName in bio) {
         <Paper>
           <Table>
             <TableHead>
-              <TableRow>
-                <TableCell align="center"></TableCell>
+
+            <TableRow>
+                <TableCell align="center">Signing</TableCell>
                 <TableCell align="center">Arena</TableCell>
                 <TableCell align="center">Day</TableCell>
                 <TableCell align="center">Start</TableCell>
                 <TableCell align="center">Duration</TableCell>
+                <TableCell align="center">Create</TableCell>
               </TableRow>
+
+            <TableRow>
+                <TableCell align="center">Create</TableCell><TableCell align="right">
+              <Select
+
+            value={arena}
+            onChange={e => {arena = e.target.value
+        }    
+    }
+            input={<Input name={"arena"} id="arena-helper" />}
+          >
+          {arenaOptions}
+          </Select>
+            
+            </TableCell>
+                <TableCell align="center"><Input type="number" onChange={e => updateDay(e)} placeholder="Day"></Input></TableCell>
+                <TableCell align="center"><Input type="number" onChange = {e => updateStart(e)}  placeholder="Start Time"></Input></TableCell>
+                <TableCell align="center"><Input type="number"onChange = {e => updateDuration(e)} placeholder="Duration"></Input></TableCell>
+                <TableCell align="center"><Button onClick={e => tryNewSigning(e)}>Create Autograph Session</Button></TableCell>
+              </TableRow>
+              
             </TableHead>
             <TableBody>
           
@@ -184,7 +232,7 @@ for(var propName in bio) {
                 <TableCell align="center">{row.day}</TableCell>
                 <TableCell align="center">{row.start}</TableCell>
                 <TableCell align="center">{row.duration}</TableCell>
-                {getScheduleButton(username, row.flag, row.name)}
+                <TableCell align="center"><Button onClick={e => dropSigning(e, row.name)}>{"[X]"}</Button></TableCell>
                 
                 </TableRow>
               ))}
@@ -198,7 +246,6 @@ for(var propName in bio) {
 
       return (
         <div>
-            <Navigation></Navigation>
             <p>Participatory Olympic Events</p>      
            
             <br/>

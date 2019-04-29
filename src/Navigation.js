@@ -113,8 +113,6 @@ class Navigation extends Component {
             var s = (
             <div>  
                 <p>This is for public!</p>
-                <PurchaseTickets></PurchaseTickets>
-                <MyEvents></MyEvents>
                 <ViewAthleteBio></ViewAthleteBio>
                 </div>
             )

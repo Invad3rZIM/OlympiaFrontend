@@ -152,7 +152,6 @@ class MyEvents extends Component {
 
       return (
         <div>
-          <Navigation></Navigation>
             <p>This is a view of your current schedule</p>
         { t}
         </div>

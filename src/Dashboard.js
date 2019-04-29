@@ -51,7 +51,7 @@ class Dashboard extends Component {
   render() {
 
     return (
-      <div>  <Navigation/></div>
+      <div> </div>
     )
   }
 }

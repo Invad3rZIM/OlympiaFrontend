@@ -42,8 +42,6 @@ class ViewAthleteBio extends Component {
     redirect("CREATE_USER")
   }
 
-
-
   render() {
 
     let profile = buildProfile()
@@ -55,7 +53,7 @@ class ViewAthleteBio extends Component {
     return (
        
       <div>
-           <p>This is a view of an atheltes Bio</p>
+           <p>This is a view of an athlete's Bio</p>
           <p>Name: </p>
           <p>Sex: </p>
           <p>Age: </p>

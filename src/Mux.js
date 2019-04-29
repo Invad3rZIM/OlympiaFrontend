@@ -15,6 +15,7 @@ import AthleteScheduler from './AthleteScheduler';
 import PurchaseTickets from './PurchaseTickets.js';
 import AthleteBio from './AthleteBio.js';
 import MyEvents from './MyEvents.js';
+import Navigation from './Navigation.js';
 
 function mapStateToProps(state) {
   return {
@@ -29,48 +30,62 @@ class Mux extends Component {
   }
 
   render() {
+      var s 
+
         switch(this.props.redirect.page ) {
             case "LOGIN": 
-                return (
-                    <div><Login/></div>
-                );
+    
+                    s = (<div><Login/></div>)
+             break
                 case "CREATE_USER": 
-                return (
-                    <div><CreateUser/></div>
-                )
+             
+                    s = (<div><CreateUser/></div>)
+              break
                 case "CREATE_ARENA": 
-                return (
-                    <div><NewArena/></div>
-                )
+         
+                   s = (<div><NewArena/></div>)
+            break
                 case "CREATE_EVENT": 
-                return (
-                    <div><CreateEvent/></div>
-                )
+                
+                   s = ( <div><CreateEvent/></div>)
+                break
                 case "DASHBOARD": 
-                return (
-                    <div><Dashboard/></div>
-                )
+                    s =(      <div><Dashboard/></div>)
+                break
                 case "SCHEDULE_SIGNING": 
-                return (
-                    <div><AthleteSigningScheduler/></div>
-                )
+                
+                    s =(     <div><AthleteSigningScheduler/></div>)
+                    break
                 case "ATHLETE_COMPETITION": 
-                return (
-                    <div><AthleteScheduler/></div>
-                )
+             
+                    s =(      <div><AthleteScheduler/></div>)
+                    break
                 case "SET_BIO": 
-                return (
-                    <div><AthleteBio/></div>
-                )
+             
+                    s =(   <div><AthleteBio/></div>)
+                    break
                 case "ATHLETE_PURCHASE": 
-                return (
-                    <div><PurchaseTickets/></div>
-                )
+            
+                    s =(   <div><PurchaseTickets/></div>)
+                    break
                 case "MY_EVENTS": 
-                return (
-                    <div><MyEvents/></div>
-                )
+               
+                s =(    <div><MyEvents/></div>)
+                break
         }
+
+        if (this.props.redirect.page == "LOGIN" || this.props.redirect.page == "CREATE_USER") {
+            return (<div>{s}</div>)
+        }
+
+        return (  (<div>
+                <Navigation>
+
+                </Navigation>
+
+                {s}
+         </div>   
+        ))
 
   }
 }
