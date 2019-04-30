@@ -152,11 +152,8 @@ class AthleteSigningScheduler extends Component {
   render() {
       username = this.props.user.username
       var events = this.props.event.allEvents
-
       var arenas = this.props.arena.allArenas
-
       var arenaOptions = arenas.map((d) => (<MenuItem key={d.Name}  value={d.Name}>{d.Name}</MenuItem>))
-
       var s = this.props.athlete.allAthletes
 
       let bio = {}
@@ -173,12 +170,9 @@ for(var propName in bio) {
     propValue = bio[propName]
 
     if(propName == "EventsParticipating")
-    break;
+      break;
 }
 
-
-    //  for(var e in bio)
-  //    console.log(bio['EventsParticipating'].Event)
   if (propValue == null) {
     propValue = []
   }
@@ -188,6 +182,10 @@ for(var propName in bio) {
       events = events.filter(d => {
         return (d.name.includes(this.props.user.firstname) && d.name.includes(this.props.user.lastname))
       })
+
+      let tableStyle = {
+          
+      }
 
       var eventTable = (
         <Paper>

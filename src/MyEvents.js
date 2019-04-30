@@ -116,10 +116,12 @@ class MyEvents extends Component {
       //need to sort everything. will do that later.
       var listItems = events
 
+     
+
   var t = (
     <Paper>
       <Table>
-        <TableHead>
+        <TableHead >
           <TableRow>
             <TableCell>Event</TableCell>
             <TableCell align="right">Arena</TableCell>

@@ -110,7 +110,7 @@ class GruntPage extends Component {
 
 
       listItems = listItems.filter((d) => {
-        return !d.name.startsWIth("(S) - ")
+        return !d.name.startsWith("(S) - ")
       })
 
   var t = (

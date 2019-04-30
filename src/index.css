@@ -12,13 +12,16 @@ body {
   .login-block {
     position: fixed;
     border-radius: 25px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(58,85,174);
     min-width: 400px;
     height: 400px;
     top: 50%;
     left: 50%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
-    background-color: rgb(50, 115, 220, 0.5);
+    background-color: rgb(242,241,240);
   }
 
 
@@ -37,13 +40,18 @@ body {
 .create-user-block {
   position: fixed;
   border-radius: 25px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(58,85,174);
   min-width: 400px;
   height: 400px;
   top: 50%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
-  background-color: rgb(50, 115, 220, 0.5);
+  background-color: rgb(242,241,240);
+
+  background-color: rgb(242,241,240);
 }
 
 .create-user-block__form {
@@ -55,15 +63,21 @@ body {
 }
 
 .athlete-bio {
+  
   position: fixed;
   border-radius: 25px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(58,85,174);
   min-width: 400px;
-  height: 450px;
-  top: 40%;
+  height: 440px;
+  top: 50%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
-  background-color: rgb(50, 115, 220, 0.5);
+  background-color: rgb(242,241,240);
+
+  background-color: rgb(242,241,240);
 }
 
 .athlete-bio__form {
@@ -73,7 +87,11 @@ body {
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
 
+}
 
+.table {
+  width: '250px';
+  height: '250px';
 }
 
 code {

@@ -23,7 +23,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Navigation from './Navigation.js';
 
-
+    
 function weekday(num) {
   switch(num % 7) {
       case 0: return "Sunday"
@@ -161,6 +161,7 @@ class PurchaseTickets extends Component {
     event.preventDefault();
   }
 
+  
 
   render() {
       var events = this.props.event.allEvents
@@ -172,15 +173,15 @@ class PurchaseTickets extends Component {
       listItems = listItems.filter((d) => {
         return !d.name.startsWith("(S) - ")
       })
-
+   
       if (this.props.user.usertype == "public") { //public stuff
      
   var t = (
     <Paper>
-      <Table>
-        <TableHead>
+      <Table >
+        <TableHead >
           <TableRow>
-            <TableCell>Event</TableCell>
+            <TableCell >Event</TableCell>
             <TableCell align="right">Arena</TableCell>
             <TableCell align="right">Tickets Remaining</TableCell>
 
@@ -218,9 +219,9 @@ class PurchaseTickets extends Component {
 
   var t = (
     <Paper>
-      <Table>
+      <Table>}>
         <TableHead>
-          <TableRow>
+          <TableRow >
             <TableCell>Event</TableCell>
             <TableCell align="right">Arena</TableCell>
             <TableCell align="right">Tickets Remaining</TableCell>
