@@ -69,7 +69,7 @@ class Login extends Component {
       <div className="login-block">
         <form className = "login-block__form">
         <br/> <br/>
-        <p >Login</p>
+        <p>Login</p>
       <Input type="text" placeholder="username"  name="username" onChange ={this.handleChange}></Input>
       <br></br>  
       <Input type="password" placeholder="password" name="password" onChange={this.handleChange}></Input>

@@ -164,23 +164,43 @@ for(var propName in bio) {
         return !d.name.startsWith("(S) -")
       })
       
+      const tableStyles = {
+        width: '80%',
+        
+        margin: 'auto',
+
+        borderRadius: '15px',
+        borderWidth: '5px',
+        borderStyle: 'solid',
+        bordercolor: 'black',
+      };
+
+      const headerStyles = {
+        backgroundColor: 'blue',
+      };
+      
+      const rowStyles = {
+        textColor: 'blue',
+      };
+
       var eventTable = (
         <Paper>
-          <Table>
-            <TableHead>
-              <TableRow>
+          <Table style={tableStyles}>
+            <TableHead style={headerStyles}>
+              <TableRow style={rowStyles}>
                 <TableCell align="center">Event</TableCell>
                 <TableCell align="center">Arena</TableCell>
                 <TableCell align="center">Day</TableCell>
                 <TableCell align="center">Start</TableCell>
                 <TableCell align="center">Duration</TableCell>
+                <TableCell align="center">Book</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
           
             {events.map(row =>
                   (
-                <TableRow key={row.id}>
+                <TableRow key={row.id} color="#FAFAFA">
                
                <TableCell align="center">{row.name}</TableCell>
                 <TableCell align="center">{row.arena}</TableCell>
