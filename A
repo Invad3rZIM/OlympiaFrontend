@@ -1,0 +1,29 @@
+[33m88e4009[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m HEAD@{0}: commit: changes
+[33me1353cf[m HEAD@{1}: checkout: moving from login to master
+[33mebedae7[m[33m ([m[1;32mlogin[m[33m)[m HEAD@{2}: commit: Navigation
+[33m7585c59[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/login[m[33m, [m[1;32morigin/master[m[33m)[m HEAD@{3}: checkout: moving from master to login
+[33me1353cf[m HEAD@{4}: checkout: moving from login to master
+[33m7585c59[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/login[m[33m, [m[1;32morigin/master[m[33m)[m HEAD@{5}: reset: moving to HEAD
+[33m7585c59[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/login[m[33m, [m[1;32morigin/master[m[33m)[m HEAD@{6}: pull origin master: Fast-forward
+[33m2b16cd9[m HEAD@{7}: reset: moving to HEAD
+[33m2b16cd9[m HEAD@{8}: pull origin login: Merge made by the 'recursive' strategy.
+[33m20b7e50[m HEAD@{9}: commit: Nav Bar
+[33m25ceb62[m HEAD@{10}: pull origin master: Fast-forward
+[33m3fe8691[m HEAD@{11}: reset: moving to HEAD
+[33m3fe8691[m HEAD@{12}: checkout: moving from login to login
+[33m3fe8691[m HEAD@{13}: pull origin master: Fast-forward
+[33m59c2fa9[m HEAD@{14}: commit: create user
+[33m789e8ae[m HEAD@{15}: checkout: moving from login to login
+[33m789e8ae[m HEAD@{16}: pull origin master: Merge made by the 'recursive' strategy.
+[33m5901160[m HEAD@{17}: reset: moving to HEAD
+[33m5901160[m HEAD@{18}: commit: login
+[33mce845a0[m[33m ([m[1;31morigin/afe[m[33m, [m[1;32mafe[m[33m)[m HEAD@{19}: checkout: moving from afe to login
+[33mce845a0[m[33m ([m[1;31morigin/afe[m[33m, [m[1;32mafe[m[33m)[m HEAD@{20}: pull origin afe: Fast-forward
+[33m4ed98b1[m HEAD@{21}: commit: Athlete Bio
+[33me1353cf[m HEAD@{22}: checkout: moving from afe to afe
+[33me1353cf[m HEAD@{23}: checkout: moving from master to afe
+[33me1353cf[m HEAD@{24}: pull origin master: Fast-forward
+[33m41c2743[m HEAD@{25}: reset: moving to HEAD
+[33m41c2743[m HEAD@{26}: pull origin master: Fast-forward
+[33me18fcf7[m HEAD@{27}: reset: moving to HEAD
+[33me18fcf7[m HEAD@{28}: initial pull

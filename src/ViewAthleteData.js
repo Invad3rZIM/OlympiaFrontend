@@ -71,7 +71,7 @@ function getData(name, arena,  day, start, duration,  flag) {
  }
 
 
-class AthleteScheduler extends Component {
+class ViewAthleteData extends Component {
   constructor(props) {
     super(props);
     
@@ -158,11 +158,7 @@ for(var propName in bio) {
     propValue = []
   }
 
-      events = events.map(d =>getData(d.Name, d.Arena, d.Day, d.StartTime, d.Duration, (propValue[d.Name] == null))) //this render needs to be completed)
-
-      events = events.filter(d => {
-        return !d.name.startsWith("(S) -")
-      })
+    
       
       var eventTable = (
         <Paper>
@@ -213,5 +209,4 @@ for(var propName in bio) {
 }
 
 
-
-export default connect(mapStateToProps)(AthleteScheduler)
+export default connect(mapStateToProps)(ViewAthleteData)

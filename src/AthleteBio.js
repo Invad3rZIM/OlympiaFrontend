@@ -135,6 +135,25 @@ class AthleteBio extends Component {
       }
     }
 
+    if (bio.sex == "") {
+      bio.sex = "Sex"
+    }
+
+    if(bio.weight == null) {
+      bio.weight = "lbs"
+    }
+
+
+    if(bio.feet == null) {
+      bio.feet = "ft"
+    }
+
+
+    if(bio.inches == null) {
+      bio.inches = "in"
+    }
+
+
     return (
       <div className="athlete-bio">
       <Paper elevation={1}>
@@ -155,7 +174,7 @@ class AthleteBio extends Component {
     <p>Ft: <Select
     // to-do default value and displaying selection
         name="Feet"
-        value= {this.feet}
+        value= {""+bio.feet}
         onChange={(e) => this.handleHeight("FEET", e)}>
           <MenuItem value="4">4</MenuItem>
           <MenuItem value="5">5</MenuItem>
@@ -165,7 +184,7 @@ class AthleteBio extends Component {
          In: <Select
     // to-do default value and displaying selection
         name="Inches"
-        value= {this.inches}
+        value= {"" + bio.inches}
         onChange={(e) => this.handleHeight("INCHES", e)}>
        
           <MenuItem value="1">1</MenuItem>

@@ -185,6 +185,9 @@ for(var propName in bio) {
 
       events = events.map(d =>getData(d.Name, d.Arena, d.Day, d.StartTime, d.Duration, (propValue[d.Name] == null))) //this render needs to be completed)
 
+      events = events.filter(d => {
+        return (d.name.contains(this.props.user.firstname) && d.name.contains(this.props.user.lastname))
+      })
       var eventTable = (
         <Paper>
           <Table>
@@ -246,7 +249,7 @@ for(var propName in bio) {
 
       return (
         <div>
-            <p>Participatory Olympic Events</p>      
+            <p>Autograph Signing</p>      
            
             <br/>
 

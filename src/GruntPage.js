@@ -108,7 +108,10 @@ class GruntPage extends Component {
       events = events.filter((e) => {
         console.log(e)
         let guards = e.CurrentGuards
-        
+
+        if (guards == null)
+          guards = []
+
         for(var i = 0; i < guards.length; i++ ) {
             if(guards[i].Username == this.props.user.username) {
                 return true
