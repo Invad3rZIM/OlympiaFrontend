@@ -25,6 +25,7 @@ import { updateSecurity } from './actions/securityActions';
 import { formatMs } from '@material-ui/core/styles/transitions';
 import { athleteToggleEvent } from './actions/athleteActions';
 import Navigation from './Navigation.js'
+import { setOption } from './actions/internalActions';
 
 
 function mapStateToProps(state) {
@@ -32,7 +33,8 @@ function mapStateToProps(state) {
     event: state.event,
     arena: state.arena,
     athlete : state.athlete,
-    user: state.user
+    user: state.user,
+    internal: state.internal
   };
 }
 
@@ -133,33 +135,74 @@ class ViewAthleteData extends Component {
         return false
       })*/
       var s = this.props.athlete.allAthletes
+      var athleteName = this.props.internal.searchAthlete
+      let bio = null
 
-      let bio = {}
+      if (athleteName == null) {
+        athleteName = ""
+      }
   
       for(var i = 0; i < s.length; i++) {
-        if (s[i].Username == this.props.user.username) {
+        if (s[i].Username == athleteName) {
           bio = s[i]
           break;
         }
       }
 
-      var propValue;
+    var pv = []
+
+
+  var input = (
+    <div>
+      <Input placeholder="Search Athlete" onBlur={e => {
+        console.log(e.target.value)
+
+
+        
+        setOption("SEARCH_ATHLETE", e.target.value)
+      }}></Input>
+    </div>
+  )
+
+  if (bio == null) {
+    return (<div>{input}</div>)
+  }
+
 for(var propName in bio) {
-    propValue = bio[propName]
-
-    if(propName == "EventsParticipating")
-    break;
+    if(propName == "EventsParticipating") {
+      pv= bio[propName]
+      break;
+    }
 }
-
 
     //  for(var e in bio)
   //    console.log(bio['EventsParticipating'].Event)
-  if (propValue == null) {
-    propValue = []
+  if (pv == null) {
+    pv = []
   }
 
-    
+  console.log(pv)  
+var t = []
+  for(var c in pv) {
+    t.push(pv[c])
+  }
+
+  var b = (
       
+    <div>
+    <p>This is a view of an athlete's Bio</p>
+   <p>Name: {bio["First"] + " " + bio["Last"]}</p>
+   <p>Sex: {bio["Sex"]} </p>
+   <p>Age: {bio["Age"] + " years old"}</p>
+   <p>Height: {parseInt(bio["Height"]/100) + "' " + bio["Height"]%100 +"\"" } </p>
+   <p>Weight: {bio["Weight"] + " lbs"}</p>
+   <p>Bio:{ bio["Bio"]} </p>
+
+</div>
+  )
+  
+  events = t.map(d =>getData(d.Name, d.Arena, d.Day, d.StartTime, d.Duration, true)) //this render needs to be completed)
+    
       var eventTable = (
         <Paper>
           <Table>
@@ -184,8 +227,6 @@ for(var propName in bio) {
                 <TableCell align="center">{row.day}</TableCell>
                 <TableCell align="center">{row.start}</TableCell>
                 <TableCell align="center">{row.duration}</TableCell>
-                {getScheduleButton(username, row.flag, row.name)}
-                
                 </TableRow>
               ))}
 
@@ -198,8 +239,10 @@ for(var propName in bio) {
 
       return (
         <div>
-            <p>Sign up to compete!</p>      
-           
+          {input}
+
+          <br/>
+          {b}
             <br/>
 
             {eventTable}

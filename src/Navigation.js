@@ -18,6 +18,7 @@ import Navbar from './Navbar.js';
 
 import ViewAthleteBio from './ViewAthleteBio';
 import NewArena from './NewArena';
+import ViewAthleteData from './ViewAthleteData.js';
 
 function mapStateToProps(state) {
   return {
@@ -106,9 +107,7 @@ class Navigation extends Component {
         case "public" :
             var s = (
             <div>  
-              
-                <p>This is for public!</p>
-                <ViewAthleteBio></ViewAthleteBio>
+                <ViewAthleteData></ViewAthleteData>
                 </div>
             )
             break
@@ -120,7 +119,7 @@ class Navigation extends Component {
 
                 <PurchaseTickets></PurchaseTickets>
                 <MyEvents></MyEvents>
-                <ViewAthleteBio></ViewAthleteBio>
+                <ViewAthleteData></ViewAthleteData>
                 </div>
             )
              break
