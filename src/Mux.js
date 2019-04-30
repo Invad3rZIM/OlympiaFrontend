@@ -17,6 +17,7 @@ import AthleteBio from './AthleteBio.js';
 import MyEvents from './MyEvents.js';
 import Navigation from './Navigation.js';
 import ViewAthleteData from './ViewAthleteData';
+import ViewEventData from './ViewEventData';
 
 function mapStateToProps(state) {
   return {
@@ -75,8 +76,17 @@ class Mux extends Component {
                 break
                 case "VIEW_BIO":
                 console.log("mux: " + "view bio")
-                s =(    <div><ViewAthleteData/></div>)
+                s =(    <div><ViewEventData/><br/><ViewAthleteData/></div>)
                 break
+
+                case "SEARCH": 
+                s =(    <div><ViewEventData/><br/><ViewAthleteData/></div>)
+                break
+            case "PURCHASE": 
+            
+            s =(   <div><PurchaseTickets/><br/><MyEvents></MyEvents></div>)
+            break
+
         }
 
         if (this.props.redirect.page == "LOGIN" || this.props.redirect.page == "CREATE_USER") {

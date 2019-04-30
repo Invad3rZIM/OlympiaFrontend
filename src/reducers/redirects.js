@@ -27,6 +27,15 @@ const redirect = (state={page:"LOGIN"}, action) => {
             break;
         }
 
+
+        case "PURCHASE" : {
+            state = {...state, page: "PURCHASE"}
+            break;
+        } case "SEARCH" : {
+            state = {...state, page: "SEARCH"}
+            break;
+        }
+
         case "ATHLETE_PURCHASE" : {
             state = {...state, page: "ATHLETE_PURCHASE"}
             break;

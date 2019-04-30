@@ -98,7 +98,7 @@ class MyEvents extends Component {
 
 
   render() {
-      var events = this.props.event.allEvents.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration)) 
+      var events = this.props.event.allEvents.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.ArenaCapacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration)) 
       var myEvents = this.props.event.myEvents
       var eventMap = []
 

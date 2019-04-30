@@ -73,7 +73,7 @@ function getData(name, arena,  day, start, duration,  flag) {
  }
 
 
-class ViewAthleteData extends Component {
+class ViewEventData extends Component {
   constructor(props) {
     super(props);
     
@@ -154,12 +154,11 @@ class ViewAthleteData extends Component {
 
   var input = (
     <div>
-      <Input placeholder="Search Athlete" onBlur={e => {
+      <Input placeholder="Search Event" onBlur={e => {
         console.log(e.target.value)
-
-
         
-        setOption("SEARCH_ATHLETE", e.target.value)
+        
+        setOption("SEARCH_EVENT", e.target.value)
       }}></Input>
     </div>
   )
@@ -248,24 +247,10 @@ var t = []
             <br/>
 
             {eventTable}
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-
         </div>
       );
   }
 }
 
 
-export default connect(mapStateToProps)(ViewAthleteData)
+export default connect(mapStateToProps)(ViewEventData)

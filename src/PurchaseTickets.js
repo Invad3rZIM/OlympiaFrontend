@@ -166,8 +166,11 @@ class PurchaseTickets extends Component {
   render() {
       var events = this.props.event.allEvents
       var buy = "Buy"
-      var listItems = events.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration)) //this r
-      
+
+      if (events == null)
+      events = [] 
+
+      var listItems = events.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.ArenaCapacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration)) //this r
       
       listItems = listItems.filter((d) => {
         return !d.name.startsWith("(S) - ")

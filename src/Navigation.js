@@ -15,6 +15,7 @@ import AthleteBio from './AthleteBio.js';
 import GruntPage from './GruntPage.js';
 import AthleteScheduler from './AthleteScheduler.js';
 import Navbar from './Navbar.js';
+import ViewEventData from './ViewEventData.js'
 
 import ViewAthleteBio from './ViewAthleteBio';
 import NewArena from './NewArena';
@@ -107,7 +108,6 @@ class Navigation extends Component {
         case "public" :
             var s = (
             <div>  
-                <ViewAthleteData></ViewAthleteData>
                 </div>
             )
             break

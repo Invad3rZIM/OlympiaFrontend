@@ -61,6 +61,15 @@ const redirectNewEvent = () => {
 };
 
 
+
+const redirectPurchaseTickets = () => {
+  redirect("PURCHASE")
+};
+const redirectSearches = () => {
+  redirect("SEARCH")
+};
+
+
 function ButtonAppBar(props) {
 
   const { classes } = props;
@@ -72,6 +81,10 @@ function ButtonAppBar(props) {
         case "public" :
             var navList = (
             <div>  
+
+<Button  color="inherit" onClick={redirectPurchaseTickets}>Purchase Tickets</Button>
+                        <Button  color="inherit" onClick={redirectSearches} >Lookup</Button>
+
               </div>
             )
             break
