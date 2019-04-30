@@ -3,8 +3,8 @@ import { redirect } from "./redirectActions";
 import Dashboard from "../Dashboard";
 import { getAllEvents } from "./eventActions";
 
-export function updateBio(athlete, height, weight, sex, bio, age) {
-    console.log(athlete + " " + height + " " + weight + " " + sex + " " + bio + " " + age)
+export function updateBio(athlete, height, weight, sex, bio, age, country) {
+    console.log(athlete + " " + height + " " + weight + " " + sex + " " + bio + " " + age + " " + country )
 
     if (height == 0) {
         height = -1;
@@ -26,6 +26,9 @@ export function updateBio(athlete, height, weight, sex, bio, age) {
         age = -1
     }
 
+    if (country == "Country") {
+        country = ""
+    }
     console.log("AGE : " + age)
 
     fetch('https://olympiabackend.appspot.com/athlete/bio', {
@@ -39,7 +42,8 @@ export function updateBio(athlete, height, weight, sex, bio, age) {
             weight : Number(weight),
             sex : sex,
             bio : bio,
-            age: Number(age)
+            age: Number(age),
+            country : country
         }),
         }).then((response) => response.json()).then((responseJson) => {
             getAllAthletes()

@@ -187,6 +187,7 @@ var t = []
     t.push(pv[c])
   }
 
+  
   var b = (
       
     <div>
@@ -196,6 +197,7 @@ var t = []
    <p>Age: {bio["Age"] + " years old"}</p>
    <p>Height: {parseInt(bio["Height"]/100) + "' " + bio["Height"]%100 +"\"" } </p>
    <p>Weight: {bio["Weight"] + " lbs"}</p>
+   <p>Country of Origin: {bio["Country"] }</p>
    <p>Bio:{ bio["Bio"]} </p>
 
 </div>

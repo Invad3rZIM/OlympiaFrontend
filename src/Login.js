@@ -74,9 +74,9 @@ class Login extends Component {
       <br></br>  
       <Input type="password" placeholder="password" name="password" onChange={this.handleChange}></Input>
 <br/><br></br>
-        <Button  variant="contained" color="primary" onClick={this.handleSubmit} >Login</Button>
+        <Button  variant="contained" color="#FC5130" onClick={this.handleSubmit} >Login</Button>
         <br/> <br/> <br/>
-        <Button color="ff00ff" variant="contained" onClick={this.createUser} > New User? </Button>
+        <Button color="FC5130" variant="contained" onClick={this.createUser} > New User? </Button>
         </form>
       </div>
     )

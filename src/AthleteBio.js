@@ -34,6 +34,7 @@ let height = 0
 let weight = 0
 let bio = "Bio"
 let username = ""
+var country = "Country"
 
 let myBio = {}
 
@@ -59,6 +60,7 @@ class AthleteBio extends Component {
       this.handleHeight = this.handleHeight.bind(this)
       this.handleWeight = this.handleWeight.bind(this)
       this.handleBio = this.handleBio.bind(this)
+      this.handleCountry = this.handleCountry.bind(this)
     
   }
 
@@ -94,6 +96,12 @@ class AthleteBio extends Component {
     weight = Number(event.target.value);
     }
 
+
+  handleCountry(event)  {
+    country = event.target.value
+    console.log(country)
+  }
+
   handleBio(event)  {
     bio = event.target.value
     
@@ -103,7 +111,7 @@ class AthleteBio extends Component {
    
    
       
-    updateBio(username, height, weight, sex, bio, age)
+    updateBio(username, height, weight, sex, bio, age, country)
     getAllAthletes()
     }
 
@@ -205,6 +213,8 @@ class AthleteBio extends Component {
     </p>
     <p>Weight: <Input type="number" placeholder={""+bio.Weight} name="weight" onChange={this.handleWeight}></Input></p>
     <p>Bio: <Input type="text" placeholder={""+bio.Bio} name="bio" onChange={this.handleBio}></Input></p>
+
+    <p>Country: <Input type="text" placeholder={""+bio.Country} name="country" onChange={this.handleCountry}></Input></p>
   
     <br/>
       <Button variant="contained" color="primary" onClick={this.handleSubmit}>Submit</Button>
