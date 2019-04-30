@@ -104,7 +104,7 @@ class ArenaTable extends Component {
 
       return (
         <div>
-            <p>Participatory Olympic Events</p>      
+            <p class="center-text">Participatory Olympic Events</p>      
            
             <br/>
 

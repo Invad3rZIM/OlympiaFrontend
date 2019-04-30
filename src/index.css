@@ -51,7 +51,6 @@ body {
   transform: translate(-50%, -50%);
   background-color: rgb(242,241,240);
 
-  background-color: rgb(242,241,240);
 }
 
 .create-user-block__form {
@@ -70,7 +69,7 @@ body {
   border-style: solid;
   border-color: rgb(58,85,174);
   min-width: 400px;
-  height: 440px;
+  height: 480px;
   top: 50%;
   left: 50%;
   /* bring your own prefixes */
@@ -86,12 +85,69 @@ body {
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
-
 }
 
-.table {
-  width: '250px';
-  height: '250px';
+#table {
+  width: 80%;
+  margin: auto;
+  table-layout: fixed;
+}
+
+.create-arena-form {
+  position: fixed;
+  padding: 40px;
+  border-radius: 25px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(58,85,174);
+  min-width: 500px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, 0%);
+
+  background-color: rgb(242,241,240);
+}
+
+#table {
+  width: 80%;
+  margin: auto;
+  table-layout: fixed;
+}
+
+.create-arena-form {
+  position: fixed;
+  padding: 40px;
+  border-radius: 25px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(58,85,174);
+  min-width: 500px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, 0%);
+
+  background-color: rgb(242,241,240);
+}
+
+.create-event-form {
+  position: fixed;
+  padding: 40px;
+  border-radius: 25px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(58,85,174);
+  min-width: 500px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, 0%);
+
+  background-color: rgb(242,241,240);
 }
 
 code {
@@ -99,3 +155,7 @@ code {
     monospace;
 }
 
+.center-text {
+  text-align: center;
+
+}

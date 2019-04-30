@@ -8,6 +8,9 @@ import AllEvents from './AllEvents';
 import store from './store';
 import Navigation from './Navigation';
 
+import Button from '@material-ui/core/Button';
+
+import Input from '@material-ui/core/Input';
 import { redirect } from './actions/redirectActions';
 
 function mapStateToProps(state) {
@@ -52,15 +55,18 @@ class CreateEvent extends Component {
       <br/>
       <br/>
       <br/>
-        <p>Create an event by specifying the information below!</p>
-        <form>
-        <input type="text" name="name" onChange={this.handleChange} placeholder="event name"></input>
-        <input type="number" name="duration"  onChange={this.handleChange}  placeholder="event duration"></input>
-        <p>IS OUTDOORS?</p> <input type="checkbox" name="outdoors"  onChange={this.handleChange}  placeholder="Is Outdoors?"></input>
-        <p>IS AQUATIC?</p> <input type="checkbox" name="aquatic"  onChange={this.handleChange}  placeholder="Is Aquatic?"></input>
-        <p>HAS TRACK?</p>  <input type="checkbox" name="track"  onChange={this.handleChange}  placeholder="Has Track?"></input>
-        <p>HAS FIELD?</p>  <input type="checkbox" name="field"  onChange={this.handleChange}  placeholder="Has Field?"></input> 
-        <button type="submit" name="submit"  onClick={this.handleSubmit}  placeholder="Create Event!">Create Event</button>
+       
+        <form className="create-event-form">
+        <p className="center-text">Create an event</p>
+        <br></br>
+        <Input type="text" name="name" onChange={this.handleChange} placeholder="event name"></Input>
+        <Input type="number" name="duration"  onChange={this.handleChange}  placeholder="event duration"></Input>
+        <p>IS OUTDOORS? <input type="checkbox" name="outdoors"  onChange={this.handleChange}  placeholder="Is Outdoors?"></input></p>
+        <p>IS AQUATIC? <input type="checkbox" name="aquatic"  onChange={this.handleChange}  placeholder="Is Aquatic?"></input></p>
+        <p>HAS TRACK?  <input type="checkbox" name="track"  onChange={this.handleChange}  placeholder="Has Track?"></input></p>
+        <p>HAS FIELD? <input type="checkbox" name="field"  onChange={this.handleChange}  placeholder="Has Field?"></input> </p> 
+        <br></br><br></br>
+        <Button type="submit" name="submit" color="primary" onClick={this.handleSubmit} variant="contained"placeholder="Create Event!">Create Event</Button>
     </form>
     </div>
     )

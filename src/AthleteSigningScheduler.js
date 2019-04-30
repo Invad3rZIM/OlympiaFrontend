@@ -15,6 +15,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import {setOption} from './actions/internalActions.js'
 import Button from '@material-ui/core/Button';
 
 import Input from '@material-ui/core/Input';
@@ -32,7 +33,8 @@ function mapStateToProps(state) {
     event: state.event,
     arena: state.arena,
     athlete : state.athlete,
-    user: state.user
+    user: state.user,
+    internal : state.internal
   };
 }
 
@@ -156,6 +158,7 @@ class AthleteSigningScheduler extends Component {
       var arenaOptions = arenas.map((d) => (<MenuItem key={d.Name}  value={d.Name}>{d.Name}</MenuItem>))
       var s = this.props.athlete.allAthletes
 
+      arena = this.props.internal.selectArena
       let bio = {}
   
       for(var i = 0; i < s.length; i++) {
@@ -206,7 +209,11 @@ for(var propName in bio) {
               <Select
 
             value={arena}
-            onChange={e => {arena = e.target.value
+            onChange={e => {
+              
+              arena = e.target.value
+              setOption("SELECT_ARENA", arena)
+
         }    
     }
             input={<Input name={"arena"} id="arena-helper" />}

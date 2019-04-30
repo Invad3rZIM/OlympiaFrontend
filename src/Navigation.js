@@ -144,7 +144,6 @@ break
                     <div>
                         <p> This is for security</p>
                         <GruntPage></GruntPage>
-                        <p>HELLO!</p>
                     </div>
                 )
                 break

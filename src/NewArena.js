@@ -8,6 +8,8 @@ import store from './store';
 import { redirect } from './actions/redirectActions';
 import Navigation from './Navigation';
 import ArenaTable from './ArenaTable.js'
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
 
 import {
   Collapse,
@@ -66,18 +68,22 @@ class NewArena extends Component {
       }
 
     return (
-        <div>
+        <div >
             <ArenaTable></ArenaTable>
             <br/><br/>
             {s}
-            <form>
-                <input type="text" name="name" onChange={this.handleChange} placeholder="arena name"></input>
-                <input type="number" name="capacity"  onChange={this.handleChange}  placeholder="capacity"></input>
-                <p>IS OUTDOORS?</p> <input type="checkbox" name="outdoors"  onChange={this.handleChange}  placeholder="Is Outdoors?"></input>
-                <p>IS AQUATIC?</p> <input type="checkbox" name="aquatic"  onChange={this.handleChange}  placeholder="Is Aquatic?"></input>
-                <p>HAS TRACK?</p>  <input type="checkbox" name="track"  onChange={this.handleChange}  placeholder="Has Track?"></input>
-                <p>HAS FIELD?</p>  <input type="checkbox" name="field"  onChange={this.handleChange}  placeholder="Has Field?"></input> 
-                <button type="submit" name="submit"  onClick={this.handleSubmit}  placeholder="Create Arena!">Create Arena</button>
+         
+            <form className="create-arena-form">
+            <p class="center-text">Create Arena</p>
+            <br></br>
+                <Input type="text" name="name" onChange={this.handleChange} placeholder="arena name"></Input>
+                <Input type="number" name="capacity"  onChange={this.handleChange}  placeholder="capacity"></Input>
+                <p>IS OUTDOORS?<input type="checkbox" name="outdoors"  onChange={this.handleChange}  placeholder="Is Outdoors?"></input> </p> 
+                <p>IS AQUATIC? <input type="checkbox" name="aquatic"  onChange={this.handleChange}  placeholder="Is Aquatic?"></input></p>
+                <p>HAS TRACK?  <input type="checkbox" name="track"  onChange={this.handleChange}  placeholder="Has Track?"></input></p>
+                <p>HAS FIELD?  <input type="checkbox" name="field"  onChange={this.handleChange}  placeholder="Has Field?"></input> </p>
+                <br></br><br></br>
+                <Button type="submit" color="primary" variant="contained" name="submit"  onClick={this.handleSubmit}  placeholder="Create Arena!">Create Arena</Button>
             </form>
         </div>
     )

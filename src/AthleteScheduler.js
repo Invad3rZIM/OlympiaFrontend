@@ -42,17 +42,20 @@ let id = 0;
 
 function getScheduleButton(user, flag, eventName) {
   var text = ""
+  var bColor = ""
 
   if (flag) {
     text = "Commit"
     flag = "on"
+    bColor = "primary"
   }
   else {
     text = "Dropout"
     flag = "off"
+    bColor = "secondary" // to do change button color
   }
   
- return ( <TableCell align="center"><Button onClick={(e) => athleteToggleEvent(username, flag, eventName) } >{text}</Button></TableCell>)
+ return ( <TableCell align="center"><Button color={bColor} onClick={(e) => athleteToggleEvent(username, flag, eventName) } >{text}</Button></TableCell>)
 }
 function getData(name, arena,  day, start, duration,  flag) {
   id += 1;
@@ -165,27 +168,30 @@ for(var propName in bio) {
       })
       
       const tableStyles = {
-        width: '80%',
-        
+        width: '80%',  
         margin: 'auto',
-
         borderRadius: '15px',
         borderWidth: '5px',
         borderStyle: 'solid',
-        bordercolor: 'black',
+        bordercolor: 'rgb(58,85,174);',
       };
 
       const headerStyles = {
         backgroundColor: 'blue',
+        color: 'white',
       };
       
       const rowStyles = {
         textColor: 'blue',
       };
 
+      const paperStyles = {
+        padding: '20px',
+      };
+
       var eventTable = (
-        <Paper>
-          <Table style={tableStyles}>
+        <Paper style={paperStyles}>
+          <Table >
             <TableHead style={headerStyles}>
               <TableRow style={rowStyles}>
                 <TableCell align="center">Event</TableCell>

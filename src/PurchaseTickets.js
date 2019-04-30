@@ -166,9 +166,8 @@ class PurchaseTickets extends Component {
   render() {
       var events = this.props.event.allEvents
       var buy = "Buy"
-      //need to sort everything. will do that later.
       var listItems = events.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration)) //this r
-      //ensure taht the tickets purchased must be positive integers = a rob task
+      
       
       listItems = listItems.filter((d) => {
         return !d.name.startsWith("(S) - ")
@@ -219,7 +218,7 @@ class PurchaseTickets extends Component {
 
   var t = (
     <Paper>
-      <Table>}>
+      <Table>
         <TableHead>
           <TableRow >
             <TableCell>Event</TableCell>

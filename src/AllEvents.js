@@ -275,7 +275,7 @@ class AllEvents extends Component {
 
       return (
         <div>
-            <p>This is a view of all the events currently in the roster!</p>
+            <p className="center-text">All Events</p>
         { t}
         </div>
       );
