@@ -126,17 +126,21 @@ class GruntPage extends Component {
         return !d.name.startsWith("(S) - ")
       })
       
+      const paperStyles = {
+        padding: '20px',
+      };  
+
   var guardSchedules = (
-    <Paper>
+    <Paper style={paperStyles}>
       <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell align="center">Shift ID</TableCell>
-            <TableCell align="center">Event</TableCell>
-            <TableCell align="center">Arena</TableCell>
-            <TableCell align="center">Day</TableCell>
-            <TableCell align="center">Start</TableCell>
-            <TableCell align="center">Duration</TableCell>
+        <TableHead id="TableHeadRow">
+          <TableRow id="TableHeadRow">
+            <TableCell id="TableHeadCell" align="center">Shift ID</TableCell>
+            <TableCell id="TableHeadCell" align="center">Event</TableCell>
+            <TableCell id="TableHeadCell" align="center">Arena</TableCell>
+            <TableCell id="TableHeadCell" align="center">Day</TableCell>
+            <TableCell id="TableHeadCell" align="center">Start</TableCell>
+            <TableCell id="TableHeadCell" align="center">Duration</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -160,7 +164,7 @@ class GruntPage extends Component {
 
       return (
         <div>
-            <p>Scheduled Shifts</p>      
+            <p id="TitleOverTable">Scheduled Security Shifts</p>      
            
             <br/>
 

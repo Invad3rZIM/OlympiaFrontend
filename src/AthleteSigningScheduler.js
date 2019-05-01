@@ -190,18 +190,33 @@ for(var propName in bio) {
           
       }
 
+      const paperStyles = {
+        padding: '20px',
+      };
+
       var eventTable = (
-        <Paper>
+        <Paper style={paperStyles}>
           <Table>
             <TableHead>
 
-            <TableRow >
-                <TableCell align="center">Signing</TableCell>
-                <TableCell align="center">Arena</TableCell>
-                <TableCell align="center">Day</TableCell>
-                <TableCell align="center">Start</TableCell>
-                <TableCell align="center">Duration</TableCell>
-                <TableCell align="center">Create</TableCell>
+            <TableRow id="TableHeadRow">
+                <TableCell 
+                id="TableHeadCell"
+                align="center">Signing</TableCell>
+                <TableCell 
+                id="TableHeadCell"
+                align="center">Arena</TableCell>
+                <TableCell 
+                id="TableHeadCell"
+                align="center">Day</TableCell>
+                <TableCell id="TableHeadCell"
+                align="center">Start</TableCell>
+                <TableCell 
+                id="TableHeadCell"
+                align="center">Duration</TableCell>
+                <TableCell 
+                id="TableHeadCell"
+                align="center">Create</TableCell>
               </TableRow>
 
             <TableRow>
@@ -255,10 +270,7 @@ for(var propName in bio) {
 
       return (
         <div>
-            <p>Autograph Signing</p>      
-           
-            <br/>
-
+            <p id="TitleOverTable">Autograph Signing</p>
             {eventTable}
         </div>
       );

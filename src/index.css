@@ -69,14 +69,18 @@ body {
   border-style: solid;
   border-color: rgb(58,85,174);
   min-width: 400px;
-  height: 480px;
-  top: 50%;
+  height: 70%;
+  top: 55%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
   background-color: rgb(242,241,240);
 
   background-color: rgb(242,241,240);
+}
+
+.PurchaseTickets{
+  transform: translate( 0%, 0%);
 }
 
 .athlete-bio__form {
@@ -93,23 +97,6 @@ body {
   table-layout: fixed;
 }
 
-.create-arena-form {
-  position: fixed;
-  padding: 40px;
-  border-radius: 25px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: rgb(58,85,174);
-  min-width: 500px;
-  height: 380px;
-  top: 50%;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, 0%);
-
-  background-color: rgb(242,241,240);
-}
-
 #table {
   width: 80%;
   margin: auto;
@@ -117,15 +104,16 @@ body {
 }
 
 .create-arena-form {
-  position: fixed;
+  position: relative;
   padding: 40px;
   border-radius: 25px;
   border-width: 5px;
   border-style: solid;
   border-color: rgb(58,85,174);
-  min-width: 500px;
-  height: 380px;
-  top: 50%;
+  min-width: 40%;
+  max-width: 40%;
+  height: 60%;
+  top: 55%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, 0%);
@@ -134,15 +122,16 @@ body {
 }
 
 .create-event-form {
-  position: fixed;
+  position: relative;
   padding: 40px;
   border-radius: 25px;
   border-width: 5px;
   border-style: solid;
   border-color: rgb(58,85,174);
-  min-width: 500px;
-  height: 380px;
-  top: 50%;
+  min-width: 40%;
+  max-width: 40%;
+  height: 60%;
+  top: 55%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, 0%);
@@ -158,4 +147,31 @@ code {
 .center-text {
   text-align: center;
 
+}
+
+#Table{
+  width:80%;
+  margin:auto;
+
+}
+
+#TableHeadRow{
+  background:#3A55AE;
+}
+
+#TableHeadCell{
+  font-weight: bold;
+  color: white;
+}
+
+#TitleOverTable{
+
+  text-align: center;
+  font-weight: bold;
+  font-size: 150%;
+
+}
+
+#CheckBoxInput{
+  vertical-align:right;
 }

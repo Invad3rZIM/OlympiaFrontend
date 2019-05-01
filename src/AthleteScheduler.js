@@ -192,14 +192,24 @@ for(var propName in bio) {
       var eventTable = (
         <Paper style={paperStyles}>
           <Table >
-            <TableHead style={headerStyles}>
-              <TableRow style={rowStyles}>
-                <TableCell align="center">Event</TableCell>
-                <TableCell align="center">Arena</TableCell>
-                <TableCell align="center">Day</TableCell>
-                <TableCell align="center">Start</TableCell>
-                <TableCell align="center">Duration</TableCell>
-                <TableCell align="center">Book</TableCell>
+            <TableHead id="TableHeadRow">
+              <TableRow id="TableHeadRow">
+                <TableCell 
+                 id="TableHeadCell"
+                 align="center">Event</TableCell>
+                <TableCell 
+                id="TableHeadCell"
+                align="center">Arena</TableCell>
+                <TableCell 
+                id="TableHeadCell"
+                align="center">Day</TableCell>
+                <TableCell id="TableHeadCell"
+                align="center">Start</TableCell>
+                <TableCell id="TableHeadCell"
+                align="center">Duration</TableCell>
+                <TableCell 
+                id="TableHeadCell"
+                align="center">Book</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -228,10 +238,7 @@ for(var propName in bio) {
 
       return (
         <div>
-            <p>Sign up to compete!</p>      
-           
-            <br/>
-
+            <p id="TitleOverTable">Sign up to compete!</p>
             {eventTable}
         </div>
       );

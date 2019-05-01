@@ -17,6 +17,8 @@ import { getAllEvents, getMyEvents } from './actions/eventActions';
 import { getAllSecurity } from './actions/securityActions';
 import { getAllAthletes } from './actions/athleteActions';
 
+
+
 function mapStateToProps(state) {
   return {
     user: state.user
@@ -27,6 +29,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     
+
     this.state = {
         username: '',
         password: ''
@@ -65,6 +68,7 @@ class Login extends Component {
   }
   
   render() {
+
     return (
       <div className="login-block">
         <form className = "login-block__form">
@@ -74,9 +78,9 @@ class Login extends Component {
       <br></br>  
       <Input type="password" placeholder="password" name="password" onChange={this.handleChange}></Input>
 <br/><br></br>
-        <Button  variant="contained" color="#FC5130" onClick={this.handleSubmit} >Login</Button>
+        <Button  variant="contained" color="primary" onClick={this.handleSubmit} >Login</Button>
         <br/> <br/> <br/>
-        <Button color="FC5130" variant="contained" onClick={this.createUser} > New User? </Button>
+        <Button color="secondary" variant="contained" onClick={this.createUser} > New User? </Button>
         </form>
       </div>
     )

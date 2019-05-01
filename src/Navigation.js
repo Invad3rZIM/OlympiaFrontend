@@ -115,7 +115,6 @@ class Navigation extends Component {
             case "staff" : 
             var s = (
                 <div>
-                    <p> This is for staff</p>
 
                 <PurchaseTickets></PurchaseTickets>
                 <MyEvents></MyEvents>

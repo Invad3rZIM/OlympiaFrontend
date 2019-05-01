@@ -63,18 +63,22 @@ class ArenaTable extends Component {
 
       var arenas = this.props.arena.allArenas
 
-      var eventTable = (
-        <Paper>
-          <Table>
-            <TableHead>
+      const paperStyles = {
+        padding: '20px',
+      };  
 
-            <TableRow>
-                <TableCell align="center">Arena</TableCell>
-                <TableCell align="center">Capacity</TableCell>
-                <TableCell align="center">Outdoors</TableCell>
-                <TableCell align="center">Field</TableCell>
-                <TableCell align="center">Track</TableCell>
-                <TableCell align="center">Aquatic</TableCell>
+      var eventTable = (
+        <Paper style={paperStyles}>
+          <Table>
+            <TableHead id="TableHeadRow">
+
+            <TableRow id="TableHeadRow">
+                <TableCell id="TableHeadCell" align="center">Arena</TableCell>
+                <TableCell id="TableHeadCell" align="center">Capacity</TableCell>
+                <TableCell id="TableHeadCell" align="center">Outdoors</TableCell>
+                <TableCell id="TableHeadCell" align="center">Field</TableCell>
+                <TableCell id="TableHeadCell" align="center">Track</TableCell>
+                <TableCell id="TableHeadCell" align="center">Aquatic</TableCell>
               </TableRow>
               
             </TableHead>
@@ -104,7 +108,7 @@ class ArenaTable extends Component {
 
       return (
         <div>
-            <p class="center-text">Participatory Olympic Events</p>      
+            <p id="TitleOverTable">Participatory Olympic Events</p>      
            
             <br/>
 

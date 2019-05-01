@@ -160,12 +160,17 @@ class PurchaseTickets extends Component {
     console.log(div)
     event.preventDefault();
   }
+  
 
   
 
   render() {
       var events = this.props.event.allEvents
       var buy = "Buy"
+
+      const paperStyles = {
+        padding: '20px',
+      };
 
       if (events == null)
       events = [] 
@@ -177,18 +182,24 @@ class PurchaseTickets extends Component {
       })
    
       if (this.props.user.usertype == "public") { //public stuff
-     
-  var t = (
-    <Paper>
-      <Table >
-        <TableHead >
-          <TableRow>
-            <TableCell >Event</TableCell>
-            <TableCell align="right">Arena</TableCell>
-            <TableCell align="right">Tickets Remaining</TableCell>
 
-            <TableCell align="right">Event Duration</TableCell>
-            <TableCell align="right">(Public) Ticket Price</TableCell>
+        const paperStyles = {
+          padding: '20px',
+        };
+
+  var t = (
+    <Paper style={paperStyles}>
+      <Table >
+        <TableHead id="TableHeadRow">
+          <TableRow id="TableHeadRow">
+            <TableCell id="TableHeadCell">Event</TableCell>
+            <TableCell 
+            id="TableHeadCell"
+            align="right">Arena</TableCell>
+            <TableCell id="TableHeadCell" align="right">Tickets Remaining</TableCell>
+
+            <TableCell id="TableHeadCell" align="right">Event Duration</TableCell>
+            <TableCell id="TableHeadCell" align="right">(Public) Ticket Price</TableCell>
             <TableCell></TableCell>
           </TableRow>
         </TableHead>
@@ -220,18 +231,28 @@ class PurchaseTickets extends Component {
       } else {
 
   var t = (
-    <Paper>
+    <Paper style={paperStyles}>
       <Table>
-        <TableHead>
-          <TableRow >
-            <TableCell>Event</TableCell>
-            <TableCell align="right">Arena</TableCell>
-            <TableCell align="right">Tickets Remaining</TableCell>
+        <TableHead id="TableHeadRow">
+          <TableRow id="TableHeadRow">
+            <TableCell id="TableHeadCell"
+            >Event</TableCell>
+            <TableCell 
+            id="TableHeadCell"
+            align="right">Arena</TableCell>
+            <TableCell 
+            id="TableHeadCell"
+            align="right">Tickets Remaining</TableCell>
 
-            <TableCell align="right">Event Day</TableCell>
-            <TableCell align="right">Event Start</TableCell>
-            <TableCell align="right">Event Duration</TableCell>
-            <TableCell align="right">(Staff) Ticket Price</TableCell>
+            <TableCell id="TableHeadCell"
+            align="right">Event Day</TableCell>
+            <TableCell id="TableHeadCell"
+            align="right">Event Start</TableCell>
+            <TableCell id="TableHeadCell"
+            align="right">Event Duration</TableCell>
+            <TableCell 
+            id="TableHeadCell"
+            align="right">(Staff) Ticket Price</TableCell>
             <TableCell></TableCell>
           </TableRow>
         </TableHead>
@@ -246,8 +267,8 @@ class PurchaseTickets extends Component {
               <TableCell align="right">{row.capacity - row.current}</TableCell>
 
               <TableCell align="right">{weekday(row.day)}</TableCell>
-            <TableCell align="right">{row.start}</TableCell>
-            <TableCell align="right">{row.duration}</TableCell>
+              <TableCell align="right">{row.start}</TableCell>
+              <TableCell align="right">{row.duration}</TableCell>
 
               
               <TableCell align="right">$ {row.staffPrice} x <Input type="number" name={row.name}  onBlur={this.calcPrice} align="center" placeholder={"" + 0}  pattern="\d+" min="0" ></Input> = <span id={ row.name + "x"}>{dict[row.name]}</span> </TableCell>
@@ -264,8 +285,8 @@ class PurchaseTickets extends Component {
        }
 
       return (
-        <div>
-            <p>This is a view of all the events currently available for purchase!</p>
+        <div >
+            <p id="TitleOverTable">This is a view of all the events currently available for purchase!</p>
         { t}
         </div>
       );
