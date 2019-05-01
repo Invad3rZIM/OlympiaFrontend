@@ -147,7 +147,8 @@ class ViewEventData extends Component {
 
   var input = (
     <div>
-      <Input placeholder="Search Event" onBlur={e => {
+      <br/>
+      <Input placeholder="Search Event (name)" onBlur={e => {
         setOption("SEARCH_EVENT", e.target.value)
       }}></Input>
     </div>
@@ -218,6 +219,7 @@ var t = []
 
       return (
         <div>
+          <br/>
           <EventTable/>
           <br/>
           <br/>

@@ -68,6 +68,9 @@ function getData(name, arena,  day, start, duration,  flag) {
     arena = arena.Name
   }
 
+  if (name.startsWith("(S) - "))
+    name = name.substring(5)
+
   return { id, name, arena ,  day, start, duration,  flag};
  
  }
@@ -153,14 +156,16 @@ class ViewAthleteData extends Component {
 
 
   var input = (
-    <div>
-      <Input placeholder="Search Athlete" onBlur={e => {
+    <div >
+      <br></br>
+      <Input placeholder="Search Athlete (username)" onBlur={e => {
         console.log(e.target.value)
 
 
         
         setOption("SEARCH_ATHLETE", e.target.value)
       }}></Input>
+      <br/>
     </div>
   )
 
@@ -244,6 +249,7 @@ var t = []
           {input}
 
           <br/>
+
           {b}
             <br/>
 

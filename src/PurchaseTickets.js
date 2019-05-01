@@ -58,7 +58,7 @@ function getData(name, arena, current, capacity, ticketPrice, staffPrice, day, s
 
   dict[name] = 0;
   taffPrice[name] = staffPrice
-  publicPrice[name] = publicPrice
+  publicPrice[name] = ticketPrice
   start = parseInt(start/60) * 100 + start%60
   duration = parseInt(duration / 60 ) * 100 + duration%60
 
@@ -92,6 +92,7 @@ class PurchaseTickets extends Component {
     this.buyAthleteTickets = this.buyAthleteTickets.bind(this)
     
     this.calcPrice = this.calcPrice.bind(this);
+    this.calcPrice2 = this.calcPrice2.bind(this);
     this.setX = this.setX.bind(this);
   }
 
@@ -122,14 +123,16 @@ class PurchaseTickets extends Component {
     var n = this.state.event;
     buyTicket(n, this.props.user.username, count[n], "off")
 
+    count[event.target.name] = 0
     event.preventDefault();
   }  
 
-  buyPublicTickets(event) {
+  buyPublicTickets(count, event) {
     console.log(this.state.event)
     var n = this.state.event;
-    buyTicket(n, this.props.user.username, publicPrice[n], "off")
+    buyTicket(n, this.props.user.username, count, "off")
 
+    count[event.target.name] = 0
     event.preventDefault();
   }
 
@@ -147,6 +150,20 @@ class PurchaseTickets extends Component {
     event.preventDefault();
   }
 
+
+  calcPrice2(event) {
+    dict[event.target.name] = publicPrice[event.target.name] * event.target.value
+    count[event.target.name] = event.target.value
+    this.state.event = event.target.name
+    console.log(event.target.name + " XXXX :) X  " + event.target.value)
+
+ 
+      
+  var div = document.getElementById(event.target.name + "x");
+  div.innerHTML = "" + dict[event.target.name];
+  console.log(div)
+}
+
   calcPrice(event) {
       dict[event.target.name] = taffPrice[event.target.name] * event.target.value
       count[event.target.name] = event.target.value
@@ -158,7 +175,6 @@ class PurchaseTickets extends Component {
     var div = document.getElementById(event.target.name + "x");
     div.innerHTML = "" + dict[event.target.name];
     console.log(div)
-    event.preventDefault();
   }
   
 
@@ -187,47 +203,57 @@ class PurchaseTickets extends Component {
           padding: '20px',
         };
 
-  var t = (
-    <Paper style={paperStyles}>
-      <Table >
-        <TableHead id="TableHeadRow">
-          <TableRow id="TableHeadRow">
-            <TableCell id="TableHeadCell">Event</TableCell>
-            <TableCell 
-            id="TableHeadCell"
-            align="right">Arena</TableCell>
-            <TableCell id="TableHeadCell" align="right">Tickets Remaining</TableCell>
-
-            <TableCell id="TableHeadCell" align="right">Event Duration</TableCell>
-            <TableCell id="TableHeadCell" align="right">(Public) Ticket Price</TableCell>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {listItems.map(row => (
-            <TableRow key={row.id}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.arena}</TableCell>
-              
-              <TableCell align="right">{row.capacity - row.current}</TableCell>
-
-
-  <TableCell align="right">{row.day}</TableCell>
-
-              
-              <TableCell align="right">$ {row.ticketPrice} x <Input type="number" name={row.name}  onBlur={this.calcPrice} align="center" placeholder={"" + 0}  pattern="\d+" min="0" ></Input> = <span id={ row.name + "x"}>{dict[row.name]}</span> </TableCell>
-              <TableCell name={row.name} onClick={this.setX}><Button value={row.name} onClick={this.buyPublicTickets}  variant="contained" color="primary" >{buy}</Button></TableCell>
-              
-
-            
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
-  );
+        var t = (
+          <Paper style={paperStyles}>
+            <Table>
+              <TableHead id="TableHeadRow">
+                <TableRow id="TableHeadRow">
+                  <TableCell id="TableHeadCell"
+                  >Event</TableCell>
+                  <TableCell 
+                  id="TableHeadCell"
+                  align="right">Arena</TableCell>
+                  <TableCell 
+                  id="TableHeadCell"
+                  align="right">Tickets Remaining</TableCell>
+      
+                  <TableCell id="TableHeadCell"
+                  align="right">Event Day</TableCell>
+                  <TableCell id="TableHeadCell"
+                  align="right">Event Start</TableCell>
+                  <TableCell id="TableHeadCell"
+                  align="right">Event Duration</TableCell>
+                  <TableCell 
+                  id="TableHeadCell"
+                  align="right">(Public) Ticket Price</TableCell>
+                  <TableCell></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {listItems.map(row => (
+                  <TableRow key={row.id}>
+                    <TableCell component="th" scope="row">
+                      {row.name}
+                    </TableCell>
+                    <TableCell align="right">{row.arena}</TableCell>
+                    
+                    <TableCell align="right">{row.capacity - row.current}</TableCell>
+      
+                    <TableCell align="right">{weekday(row.day)}</TableCell>
+                    <TableCell align="right">{row.start}</TableCell>
+                    <TableCell align="right">{row.duration}</TableCell>
+      
+                    
+                    <TableCell align="right">$ {row.ticketPrice} x <Input type="number" name={row.name}  onBlur={this.calcPrice2} align="center" placeholder={"" + 0}  pattern="\d+" min="0" ></Input> = <span id={ row.name + "x"}>{dict[row.name]}</span> </TableCell>
+                    <TableCell name={row.name} onClick={this.setX}><Button value={row.name} onClick={ e => this.buyPublicTickets(count[row.name], e)}  variant="contained" color="primary" >{buy}</Button></TableCell>
+      
+                  
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Paper>
+        );
       } else {
 
   var t = (
@@ -271,8 +297,8 @@ class PurchaseTickets extends Component {
               <TableCell align="right">{row.duration}</TableCell>
 
               
-              <TableCell align="right">$ {row.staffPrice} x <Input type="number" name={row.name}  onBlur={this.calcPrice} align="center" placeholder={"" + 0}  pattern="\d+" min="0" ></Input> = <span id={ row.name + "x"}>{dict[row.name]}</span> </TableCell>
-              <TableCell name={row.name} onClick={this.setX}><Button value={row.name} onClick={this.buyStaffTickets}  variant="contained" color="primary" >{buy}</Button></TableCell>
+              <TableCell align="right">$ {row.staffPrice} x <Input type="number" name={row.name}  onBlur={this.calcPricecalcPrice} align="center" placeholder={"" + 0}  pattern="\d+" min="0" ></Input> = <span id={ row.name + "x"}>{dict[row.name]}</span> </TableCell>
+              <TableCell name={row.name} onClick={this.setX}><Button value={row.name} onClick={e => this.buyStaffTickets(count[row.name], e)}  variant="contained" color="primary" >{"Buy"}</Button></TableCell>
               
 
             

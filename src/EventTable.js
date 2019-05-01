@@ -79,6 +79,11 @@ class EventTable extends Component {
           d.Duration = "TBD"
         }
 
+
+  if (d.Name.startsWith("(S) - "))
+  d.Name = d.Name.substring(5)
+
+
       })
     
 
@@ -126,9 +131,7 @@ class EventTable extends Component {
                 <TableCell align="center">{icon(row.HasField)}</TableCell>
                 <TableCell align="center">{icon(row.HasTrack)}</TableCell>
                 <TableCell align="center">{icon(row.IsAquatic)}</TableCell>
-                
             </TableRow>
-                
               ))}
 
 
