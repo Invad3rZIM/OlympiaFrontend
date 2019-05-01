@@ -118,10 +118,10 @@ class PurchaseTickets extends Component {
     event.preventDefault();
   }
 
-  buyStaffTickets(event) {
+  buyStaffTickets(count2, event) {
     console.log(this.state.event)
     var n = this.state.event;
-    buyTicket(n, this.props.user.username, count[n], "off")
+    buyTicket(n, this.props.user.username, count2, "off")
 
     count[event.target.name] = 0
     event.preventDefault();
@@ -298,7 +298,7 @@ class PurchaseTickets extends Component {
               <TableCell align="center">{row.duration}</TableCell>
 
               
-              <TableCell align="center">$ {row.staffPrice} x <Input type="number" name={row.name}  onBlur={this.calcPricecalcPrice} align="center" placeholder={"" + 0}  pattern="\d+" min="0" ></Input> = <span id={ row.name + "x"}>{dict[row.name]}</span> </TableCell>
+              <TableCell align="center">$ {row.staffPrice} x <Input type="number" name={row.name}  onBlur={this.calcPrice} align="center" placeholder={"" + 0}  pattern="\d+" min="0" ></Input> = <span id={ row.name + "x"}>{dict[row.name]}</span> </TableCell>
               <TableCell name={row.name} onClick={this.setX}><Button value={row.name} onClick={e => this.buyStaffTickets(count[row.name], e)}  variant="contained" color="primary" >{"Buy"}</Button></TableCell>
               
 

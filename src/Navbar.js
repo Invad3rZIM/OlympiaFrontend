@@ -91,9 +91,13 @@ function ButtonAppBar(props) {
 
             case "staff" : 
             var navList = (
-                <div>
+              <div>  
+  
+  <Button  color="inherit" onClick={redirectPurchaseTickets}>Purchase Tickets</Button>
+                          <Button  color="inherit" onClick={redirectSearches} >Lookup</Button>
+  
                 </div>
-            )
+              )
              break
 
             case "athlete" : 

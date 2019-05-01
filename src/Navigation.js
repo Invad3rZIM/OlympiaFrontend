@@ -115,10 +115,6 @@ class Navigation extends Component {
             case "staff" : 
             var s = (
                 <div>
-
-                <PurchaseTickets></PurchaseTickets>
-                <MyEvents></MyEvents>
-                <ViewAthleteData></ViewAthleteData>
                 </div>
             )
              break
