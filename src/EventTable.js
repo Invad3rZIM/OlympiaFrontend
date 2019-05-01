@@ -63,6 +63,25 @@ class EventTable extends Component {
 
       var arenas = this.props.arena.allArenas
 
+      events.map(d =>{
+        if(d.Arena == null) {
+          d.Arena = {Name : "TBD"}
+        }
+        if(d.Day == ""|| d.Start == 0 || d.Day == null) {
+          d.Day = "TBD"
+        }
+
+        if(d.Start == "" || d.Start == 0 || d.Start == null) {
+          d.Start = "TBD"
+        }
+
+        if(d.Duration == "" || d.Start == 0|| d.Duration == null) {
+          d.Duration = "TBD"
+        }
+
+      })
+    
+
       const paperStyles = {
         padding: '20px',
       };  
@@ -73,7 +92,13 @@ class EventTable extends Component {
             <TableHead id="TableHeadRow">
 
             <TableRow id="TableHeadRow">
+            <TableCell id="TableHeadCell" align="center">Event</TableCell>
                 <TableCell id="TableHeadCell" align="center">Arena</TableCell>
+
+                <TableCell id="TableHeadCell" align="center">Day</TableCell>
+                <TableCell id="TableHeadCell" align="center">Start</TableCell>
+                <TableCell id="TableHeadCell" align="center">Duration</TableCell>
+
                 <TableCell id="TableHeadCell" align="center">Capacity</TableCell>
                 <TableCell id="TableHeadCell" align="center">Outdoors</TableCell>
                 <TableCell id="TableHeadCell" align="center">Field</TableCell>
@@ -84,12 +109,19 @@ class EventTable extends Component {
             </TableHead>
             <TableBody>
           
-            {arenas.map(row =>
+            {events.map(row =>
                   (
                 <TableRow key={row.id}>
             
+
             <TableCell align="center">{row.Name}</TableCell>
-                <TableCell align="center">{row.Capacity}</TableCell>
+            <TableCell align="center">{row.Arena.Name}</TableCell>
+
+            <TableCell align="center">{""+row.Day}</TableCell>
+                <TableCell align="center">{""+row.Start}</TableCell>
+                <TableCell align="center">{"" + row.Duration}</TableCell>
+
+                <TableCell align="center">{row.ArenaCapacity}</TableCell>
                 <TableCell align="center">{icon(row.IsOutdoors)}</TableCell>
                 <TableCell align="center">{icon(row.HasField)}</TableCell>
                 <TableCell align="center">{icon(row.HasTrack)}</TableCell>
@@ -108,10 +140,6 @@ class EventTable extends Component {
 
       return (
         <div>
-            <p>Participatory Olympic Events</p>      
-           
-            <br/>
-
             {eventTable}
         </div>
       );

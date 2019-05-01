@@ -1,4 +1,4 @@
-const internalReducer = (state={createAccountOptions:"", searchAthlete:"", selectArena :""}, action) => {
+const internalReducer = (state={createAccountOptions:"",searchEvent:"", searchAthlete:"", selectArena :""}, action) => {
     switch(action.type) {
         
         case "SELECT_CREATE_USER" : {
@@ -13,6 +13,12 @@ const internalReducer = (state={createAccountOptions:"", searchAthlete:"", selec
 
         case "SEARCH_ATHLETE" : {
             state = {...state, searchAthlete : action.payload.selection}
+            break
+        }
+
+
+        case "SEARCH_EVENT" : {
+            state = {...state, searchEvent : action.payload.selection}
             break
         }
 

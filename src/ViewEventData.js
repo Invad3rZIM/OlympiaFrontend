@@ -26,6 +26,7 @@ import { formatMs } from '@material-ui/core/styles/transitions';
 import { athleteToggleEvent } from './actions/athleteActions';
 import Navigation from './Navigation.js'
 import { setOption } from './actions/internalActions';
+import EventTable from './EventTable';
 
 
 function mapStateToProps(state) {
@@ -89,7 +90,6 @@ class ViewEventData extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.handleNeededChange = this.handleNeededChange.bind(this);
-    this.updateGuards = this.updateGuards.bind(this);
   }
 
   handleChange(event) {
@@ -110,15 +110,6 @@ class ViewEventData extends Component {
   }
 
 
-  updateGuards(eventName,needed, event) {
-
-        if(!(eventName in this.needed)) {
-            updateSecurity(eventName, needed)
-        } else
-            updateSecurity(eventName, this.needed[eventName])
-  }
-
-
   render() {
       username = this.props.user.username
       var events = this.props.event.allEvents
@@ -134,16 +125,18 @@ class ViewEventData extends Component {
         }
         return false
       })*/
-      var s = this.props.athlete.allAthletes
-      var athleteName = this.props.internal.searchAthlete
+      var s = this.props.event.allEvents
+      var eventName = this.props.internal.searchEvent
       let bio = null
 
-      if (athleteName == null) {
-        athleteName = ""
+      if (eventName == null) {
+        eventName = ""
       }
   
+      if (s != null)
       for(var i = 0; i < s.length; i++) {
-        if (s[i].Username == athleteName) {
+        console.log(s[i].Name + " q " + eventName)
+        if (s[i].Name.toLowerCase() == eventName.toLowerCase()) {
           bio = s[i]
           break;
         }
@@ -155,20 +148,18 @@ class ViewEventData extends Component {
   var input = (
     <div>
       <Input placeholder="Search Event" onBlur={e => {
-        console.log(e.target.value)
-        
-        
         setOption("SEARCH_EVENT", e.target.value)
       }}></Input>
     </div>
   )
 
   if (bio == null) {
-    return (<div>{input}</div>)
+    return (<div><EventTable/> {input}</div>)
   }
 
 for(var propName in bio) {
-    if(propName == "EventsParticipating") {
+  console.log(propName + "  8")
+    if(propName == "Athletes") {
       pv= bio[propName]
       break;
     }
@@ -180,40 +171,28 @@ for(var propName in bio) {
     pv = []
   }
 
-  console.log(pv)  
+
 var t = []
   for(var c in pv) {
+    if (pv[c].Country == "") {
+      pv[c].Country = "Homeless"
+    }
     t.push(pv[c])
   }
 
-  
-  var b = (
-      
-    <div>
-    <p>This is a view of an athlete's Bio</p>
-   <p>Name: {bio["First"] + " " + bio["Last"]}</p>
-   <p>Sex: {bio["Sex"]} </p>
-   <p>Age: {bio["Age"] + " years old"}</p>
-   <p>Height: {parseInt(bio["Height"]/100) + "' " + bio["Height"]%100 +"\"" } </p>
-   <p>Weight: {bio["Weight"] + " lbs"}</p>
-   <p>Country of Origin: {bio["Country"] }</p>
-   <p>Bio:{ bio["Bio"]} </p>
 
-</div>
-  )
   
-  events = t.map(d =>getData(d.Name, d.Arena, d.Day, d.StartTime, d.Duration, true)) //this render needs to be completed)
-    
+  events = t
+
       var eventTable = (
         <Paper>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell align="center">Event</TableCell>
-                <TableCell align="center">Arena</TableCell>
-                <TableCell align="center">Day</TableCell>
-                <TableCell align="center">Start</TableCell>
-                <TableCell align="center">Duration</TableCell>
+                <TableCell align="center">Username (LOOKUP)</TableCell>
+                <TableCell align="center">First</TableCell>
+                <TableCell align="center">Last</TableCell>
+                <TableCell align="center">Country</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -222,12 +201,11 @@ var t = []
                   (
                 <TableRow key={row.id}>
                
-               <TableCell align="center">{row.name}</TableCell>
-                <TableCell align="center">{row.arena}</TableCell>
+               <TableCell align="center">{row.Username}</TableCell>
+               <TableCell align="center">{row.First}</TableCell>
+                <TableCell align="center">{row.Last}</TableCell>
 
-                <TableCell align="center">{row.day}</TableCell>
-                <TableCell align="center">{row.start}</TableCell>
-                <TableCell align="center">{row.duration}</TableCell>
+                <TableCell align="center">{row.Country}</TableCell>
                 </TableRow>
               ))}
 
@@ -240,10 +218,12 @@ var t = []
 
       return (
         <div>
+          <EventTable/>
+          <br/>
+          <br/>
           {input}
 
           <br/>
-          {b}
             <br/>
 
             {eventTable}

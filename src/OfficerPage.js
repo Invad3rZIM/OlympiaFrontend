@@ -106,7 +106,7 @@ class GruntPage extends Component {
       var events = this.props.event.allEvents
 
       //need to sort everything. will do that later.
-      var listItems = events.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.Arena.Capacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration, d.CurrentSecurity, d.SecurityNeeded)) //this render needs to be completed
+      var listItems = events.map((d) => getData(d.Name, d.Arena, d.TicketCount, d.ArenaCapacity, d.PublicPrice, d.StaffPrice, d.Day, d.StartTime, d.Duration, d.CurrentSecurity, d.SecurityNeeded)) //this render needs to be completed
 
 
       listItems = listItems.filter((d) => {
