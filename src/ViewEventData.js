@@ -73,7 +73,6 @@ function getData(name, arena,  day, start, duration,  flag) {
  
  }
 
-
 class ViewEventData extends Component {
   constructor(props) {
     super(props);
@@ -147,7 +146,9 @@ class ViewEventData extends Component {
 
   var input = (
     <div>
+      
       <br/>
+      <p id="TitleOverTable">Search Events</p>
       <Input placeholder="Search Event (name)" onBlur={e => {
         setOption("SEARCH_EVENT", e.target.value)
       }}></Input>
@@ -172,7 +173,6 @@ for(var propName in bio) {
     pv = []
   }
 
-
 var t = []
   for(var c in pv) {
     if (pv[c].Country == "") {
@@ -180,12 +180,11 @@ var t = []
     }
     t.push(pv[c])
   }
-
-
   
   events = t
 
       var eventTable = (
+      
         <Paper>
           <Table>
             <TableHead>

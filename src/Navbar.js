@@ -82,8 +82,8 @@ function ButtonAppBar(props) {
             var navList = (
             <div>  
 
-<Button  color="inherit" onClick={redirectPurchaseTickets}>Purchase Tickets</Button>
-                        <Button  color="inherit" onClick={redirectSearches} >Lookup</Button>
+<Button color="inherit" onClick={redirectPurchaseTickets}>Purchase Tickets</Button>
+<Button  color="inherit" onClick={redirectSearches} >Lookup</Button>
 
               </div>
             )
@@ -131,7 +131,6 @@ function ButtonAppBar(props) {
                 )
 
                 break;
-
       }
   return (
 

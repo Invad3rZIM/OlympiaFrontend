@@ -143,6 +143,7 @@ class EventTable extends Component {
 
       return (
         <div>
+            <p id="TitleOverTable">All Events</p>
             {eventTable}
         </div>
       );

@@ -14,6 +14,7 @@ import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import { getAllAthletes } from './actions/athleteActions';
+import { setOption } from './actions/internalActions';
 
 import { getAllEvents, getMyEvents } from './actions/eventActions';
 import { getAllSecurity } from './actions/securityActions';
@@ -22,7 +23,9 @@ import { getAllSecurity } from './actions/securityActions';
 function mapStateToProps(state) {
   return {
     user: state.user,
-    athlete: state.athlete
+    athlete: state.athlete,
+    internal : state.internal
+
   };
 }
 
@@ -68,10 +71,11 @@ class AthleteBio extends Component {
     name = event.target.value
   }
 
-
   handleSex(event) {
     //  this.setState({[event.target.name]: event.target.value});
-    sex = event.target.value;
+ //   sex = event.target.value;
+    setOption("SELECT_SEX", event.target.value)
+    this.setState({[event.target.name]: event.target.value});
   }
 
   handleAge(event) {
@@ -81,10 +85,15 @@ class AthleteBio extends Component {
   handleHeight(type, event) {
   //  this.setState({[event.target.name]: event.target.value});
   // to-do kirk height style conversion 10* ft, + inches for api
+
     if (type == "FEET") {
       heightMap.feet = Number(event.target.value)
+      setOption("SELECT_FEET", event.target.value)
+      this.setState({[event.target.name]: event.target.value});
     }
     else if (type == "INCHES") {
+      setOption("SELECT_INCHES", event.target.value)
+      this.setState({[event.target.name]: event.target.value});
       heightMap.inches = Number(event.target.value)
     }
 
@@ -127,12 +136,25 @@ class AthleteBio extends Component {
     redirect("CREATE_USER")
   }
 
-
-
   render() {
     username = this.props.user.username
     
     var s = this.props.athlete.allAthletes
+
+    let sexOption = this.props.internal.selectSex
+    let feetOption = this.props.internal.selectFeet
+    let inchesOption = this.props.internal.selectInches
+
+    if (sexOption == null ) {
+      sexOption = "Type"
+    }
+    if (feetOption == null ) {
+      feetOption = "0"
+    }
+    if (inchesOption == null ) {
+      inchesOption = "0"
+    }
+    
 
     let bio = {}
 
@@ -161,17 +183,18 @@ class AthleteBio extends Component {
       bio.inches = "in"
     }
 
-
     return (
       <div className="athlete-bio">
       <Paper elevation={1}>
       <form className="athlete-bio__form">
     <p>{bio.First + "'s Bio!"}</p>
-    <p>Sex: <Select
+    <p>Sex:  
+      <Select
     // to-do default value and displaying selection
         name="Sex"
-        value= {this.sex}
-        onChange={this.handleSex}>
+        value={sexOption}
+        onChange={this.handleSex}
+        placeholder={"Sex"}>
           <MenuItem value="Male">Male</MenuItem>
           <MenuItem value="Female">Female</MenuItem>
         </Select>
@@ -181,18 +204,20 @@ class AthleteBio extends Component {
     <p>Ft: <Select
     // to-do default value and displaying selection
         name="Feet"
-        value= {""+bio.feet}
-        onChange={(e) => this.handleHeight("FEET", e)}>
+        value= {feetOption}
+        onChange={(e) => this.handleHeight("FEET", e)}
+        placeholder={"0"}>
           <MenuItem value="4">4</MenuItem>
           <MenuItem value="5">5</MenuItem>
           <MenuItem value="6">6</MenuItem>
           <MenuItem value="7">7</MenuItem>
         </Select>
-         In: <Select
+          In: <Select
     // to-do default value and displaying selection
         name="Inches"
-        value= {"" + bio.inches}
-        onChange={(e) => this.handleHeight("INCHES", e)}>
+        value= {inchesOption}
+        onChange={(e) => this.handleHeight("INCHES", e)}
+        placeholder={"0"}>
        
           <MenuItem value="1">1</MenuItem>
           <MenuItem value="2">2</MenuItem>

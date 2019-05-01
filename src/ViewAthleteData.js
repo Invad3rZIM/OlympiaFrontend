@@ -156,7 +156,8 @@ class ViewAthleteData extends Component {
 
 
   var input = (
-    <div >
+    <div>
+       <p id="TitleOverTable">Search Athletes</p>
       <br></br>
       <Input placeholder="Search Athlete (username)" onBlur={e => {
         console.log(e.target.value)
@@ -196,7 +197,7 @@ var t = []
   var b = (
       
     <div>
-    <p>This is a view of an athlete's Bio</p>
+    <p>Athlete Bio</p>
    <p>Name: {bio["First"] + " " + bio["Last"]}</p>
    <p>Sex: {bio["Sex"]} </p>
    <p>Age: {bio["Age"] + " years old"}</p>

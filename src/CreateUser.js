@@ -35,7 +35,6 @@ class CreateUser extends Component {
     this.handleSelectChange = this.handleSelectChange.bind(this)
   }
 
-
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
   }
@@ -64,7 +63,6 @@ class CreateUser extends Component {
     } else {
       createUser(this.state.firstname, this.state.lastname, this.state.username.toLowerCase(), this.state.password, this.state.usertype)
     }
-   
   }
 
   render() {
