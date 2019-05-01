@@ -73,16 +73,16 @@ class NewArena extends Component {
             <br/><br/>
             {s}
          
-            <form className="create-arena-form">
+            <form className="create-arena-form" >
             <p class="center-text">Create Arena</p>
             <br></br>
-                <Input type="text" name="name" onChange={this.handleChange} placeholder="arena name"></Input>
-                <Input type="number" name="capacity"  onChange={this.handleChange}  placeholder="capacity"></Input>
-                <p>IS OUTDOORS?<input type="checkbox" name="outdoors"  onChange={this.handleChange}  placeholder="Is Outdoors?"></input> </p> 
+                <Input type="text" name="name" onChange={this.handleChange} placeholder="Arena name"></Input><br /><br />
+                <Input type="number" name="capacity"  onChange={this.handleChange}  placeholder="Capacity"></Input><br /><br />
+                <p id="CheckBoxInput">IS OUTDOORS?<input type="checkbox" name="outdoors" id="CheckBoxInput" onChange={this.handleChange}  placeholder="Is Outdoors?"></input> </p> 
                 <p>IS AQUATIC? <input type="checkbox" name="aquatic"  onChange={this.handleChange}  placeholder="Is Aquatic?"></input></p>
                 <p>HAS TRACK?  <input type="checkbox" name="track"  onChange={this.handleChange}  placeholder="Has Track?"></input></p>
                 <p>HAS FIELD?  <input type="checkbox" name="field"  onChange={this.handleChange}  placeholder="Has Field?"></input> </p>
-                <br></br><br></br>
+                <br></br>
                 <Button type="submit" color="primary" variant="contained" name="submit"  onClick={this.handleSubmit}  placeholder="Create Arena!">Create Arena</Button>
             </form>
         </div>

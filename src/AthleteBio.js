@@ -166,7 +166,6 @@ class AthleteBio extends Component {
       <div className="athlete-bio">
       <Paper elevation={1}>
       <form className="athlete-bio__form">
-      <br/> <br/>
     <p>{bio.First + "'s Bio!"}</p>
     <p>Sex: <Select
     // to-do default value and displaying selection
@@ -218,6 +217,7 @@ class AthleteBio extends Component {
   
     <br/>
       <Button variant="contained" color="primary" onClick={this.handleSubmit}>Submit</Button>
+      <br/>
       </form>
       </Paper>
     </div>

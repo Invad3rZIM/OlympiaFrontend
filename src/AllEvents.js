@@ -187,24 +187,27 @@ class AllEvents extends Component {
       listItems = listItems.filter(d => {
         return !d.name.startsWith("(S) - ")
       })
-
+  
+      const paperStyles = {
+        padding: '20px',
+      };
 
   var t = (
-    <Paper>
+    <Paper style={paperStyles}>
       <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Event</TableCell>
-            <TableCell align="right">Arena</TableCell>
-            <TableCell align="right">Registration Count</TableCell>
-            <TableCell align="right">Event Capacity</TableCell>
+        <TableHead id="TableHeadRow">
+          <TableRow id="TableHeadRow">
+            <TableCell id="TableHeadCell">Event</TableCell>
+            <TableCell id="TableHeadCell" align="right">Arena</TableCell>
+            <TableCell id="TableHeadCell" align="right">Registration Count</TableCell>
+            <TableCell id="TableHeadCell" align="right">Event Capacity</TableCell>
 
-            <TableCell align="right">General Ticket Price</TableCell>
-            <TableCell align="right">Staff Ticket Price</TableCell>
+            <TableCell id="TableHeadCell" align="right">General Ticket Price</TableCell>
+            <TableCell id="TableHeadCell" align="right">Staff Ticket Price</TableCell>
 
-            <TableCell align="right">Event Day</TableCell>
-            <TableCell align="right">Event Start</TableCell>
-            <TableCell align="right">Event Duration</TableCell>
+            <TableCell id="TableHeadCell" align="right">Event Day</TableCell>
+            <TableCell id="TableHeadCell" align="right">Event Start</TableCell>
+            <TableCell id="TableHeadCell" align="right">Event Duration</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -228,16 +231,16 @@ class AllEvents extends Component {
           </Select>
             
             </TableCell>
-              <TableCell align="right">{row.current}</TableCell>
-              <TableCell align="right">{row.capacity}</TableCell>
+              <TableCell align="center">{row.current}</TableCell>
+              <TableCell align="center">{row.capacity}</TableCell>
 
               <TableCell align="center">free</TableCell>
               <TableCell align="center">free</TableCell>
 
-              <TableCell align="right"><Input onBlur={(e) => this.handleDayChange(row.name, e)} name={"" +row.name} placeholder={""+ row.day}></Input></TableCell>
-              <TableCell align="right"><Input onBlur={(e) => this.handleStartChange(row.name, e)} name={"" +row.name} placeholder={""+ row.start}></Input></TableCell>
-              <TableCell align="right"><Input onBlur={(e) => this.handleDurationChange(row.name, e)} name={"" +row.name} placeholder={""+ row.duration}></Input></TableCell>
-              <TableCell align="right"><Button onClick={(e) => this.scheduleUpdate(row.name, row.day, row.start, row.duration, e)} name={"" +row.name} placeholder={""+ row.duration}>Schedule</Button></TableCell>
+              <TableCell align="center"><Input onBlur={(e) => this.handleDayChange(row.name, e)} name={"" +row.name} placeholder={""+ row.day}></Input></TableCell>
+              <TableCell align="center"><Input onBlur={(e) => this.handleStartChange(row.name, e)} name={"" +row.name} placeholder={""+ row.start}></Input></TableCell>
+              <TableCell align="center"><Input onBlur={(e) => this.handleDurationChange(row.name, e)} name={"" +row.name} placeholder={""+ row.duration}></Input></TableCell>
+              <TableCell align="center"><Button onClick={(e) => this.scheduleUpdate(row.name, row.day, row.start, row.duration, e)} name={"" +row.name} placeholder={""+ row.duration}>Schedule</Button></TableCell>
 
             </TableRow>
           ) : (

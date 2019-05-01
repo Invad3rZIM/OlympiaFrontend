@@ -116,19 +116,26 @@ class MyEvents extends Component {
       //need to sort everything. will do that later.
       var listItems = events
 
-     
+      const paperStyles = {
+        padding: '20px',
+      };   
 
   var t = (
-    <Paper>
+    <Paper style={paperStyles}>
       <Table>
-        <TableHead >
-          <TableRow>
-            <TableCell>Event</TableCell>
-            <TableCell align="right">Arena</TableCell>
-            <TableCell align="right">Day</TableCell>
-            <TableCell align="right">Event Start</TableCell>
-            <TableCell align="right">Event Duration</TableCell>
-            <TableCell align="right">Tickets Bought</TableCell>
+        <TableHead id="TableHeadRow">
+          <TableRow id="TableHeadRow">
+            <TableCell id="TableHeadCell">Event</TableCell>
+            <TableCell id="TableHeadCell"
+            align="right">Arena</TableCell>
+            <TableCell id="TableHeadCell"
+            align="right">Day</TableCell>
+            <TableCell id="TableHeadCell"
+            align="right">Event Start</TableCell>
+            <TableCell id="TableHeadCell"
+            align="right">Event Duration</TableCell>
+            <TableCell id="TableHeadCell"
+            align="right">Tickets Bought</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -137,13 +144,13 @@ class MyEvents extends Component {
               <TableCell component="th" scope="row">
                 {k}
               </TableCell>
-              <TableCell align="right">{eventMap[k].arena}     
+              <TableCell align="center">{eventMap[k].arena}     
             </TableCell>
            
-            <TableCell align="right">{weekday(eventMap[k].day)}</TableCell>
-            <TableCell align="right">{eventMap[k].start}</TableCell>
-            <TableCell align="right">{eventMap[k].duration}</TableCell>
-            <TableCell align="right">{myEvents[k]}</TableCell>
+            <TableCell align="center">{weekday(eventMap[k].day)}</TableCell>
+            <TableCell align="center">{eventMap[k].start}</TableCell>
+            <TableCell align="center">{eventMap[k].duration}</TableCell>
+            <TableCell align="center">{myEvents[k]}</TableCell>
                  
             </TableRow>
           ))}
@@ -154,7 +161,7 @@ class MyEvents extends Component {
 
       return (
         <div>
-            <p>This is a view of your current schedule</p>
+            <p id="TitleOverTable">This is a view of your current schedule</p>
         { t}
         </div>
       );

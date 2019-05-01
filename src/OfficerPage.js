@@ -155,15 +155,20 @@ class GruntPage extends Component {
 
   let guards = this.props.security.allSecurity.map((s) => overview(s.First, s.Last, s.Username, s.Shifts))
 
+
+  const paperStyles = {
+    padding: '20px',
+  };
+
   var guardSchedules = (
-    <Paper>
+    <Paper style={paperStyles}>
       <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell align="center">Username</TableCell>
-            <TableCell align="center">First Name</TableCell>
-            <TableCell align="center">Last Name</TableCell>
-            <TableCell align="center">Shifts</TableCell>
+        <TableHead id="TableHeadRow">
+          <TableRow id="TableHeadRow">
+            <TableCell id="TableHeadCell" align="center">Username</TableCell>
+            <TableCell id="TableHeadCell" align="center">First Name</TableCell>
+            <TableCell id="TableHeadCell" align="center">Last Name</TableCell>
+            <TableCell id="TableHeadCell" align="center">Shifts</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -185,7 +190,7 @@ class GruntPage extends Component {
 
       return (
         <div>
-            <p>This is a view of all the events currently in the roster!</p>
+            <p id="TitleOverTable">This is a view of all the events currently in the roster!</p>
             { t}
             
             <br/>
