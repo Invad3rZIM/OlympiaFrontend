@@ -12,6 +12,15 @@ const errors = (state={error:""}, action) => {
         case "CREATE_ARENA_SUCCESS" : {
             state = {...state, error : "success"}
         }
+        case "DIFFERENT_PASSWORDS" : {
+            state = {...state, error: "DIFFERENT_PASSWORDS"}
+            break;
+        }
+        case "INVALID_LOGIN" : {
+            state = {...state, error: "INVALID_LOGIN"}
+            break;
+        }
+       
     }
     return state;
 }

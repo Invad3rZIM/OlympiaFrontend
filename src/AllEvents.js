@@ -208,6 +208,7 @@ class AllEvents extends Component {
             <TableCell id="TableHeadCell" align="right">Event Day</TableCell>
             <TableCell id="TableHeadCell" align="right">Event Start</TableCell>
             <TableCell id="TableHeadCell" align="right">Event Duration</TableCell>
+            <TableCell id="TableHeadCell" align="right">Schedule</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -278,8 +279,8 @@ class AllEvents extends Component {
 
       return (
         <div>
-            <p className="center-text">All Events</p>
-        { t}
+            <p id="TitleOverTable">All Events</p>
+        {t}
         </div>
       );
   }

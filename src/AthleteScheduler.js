@@ -70,7 +70,6 @@ function getData(name, arena,  day, start, duration,  flag) {
   }
 
   return { id, name, arena ,  day, start, duration,  flag};
- 
  }
 
 
@@ -191,7 +190,7 @@ for(var propName in bio) {
 
       var eventTable = (
         <Paper style={paperStyles}>
-          <Table >
+          <Table id="fixed-table">
             <TableHead id="TableHeadRow">
               <TableRow id="TableHeadRow">
                 <TableCell 

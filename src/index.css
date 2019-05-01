@@ -67,16 +67,15 @@ body {
   border-radius: 25px;
   border-width: 5px;
   border-style: solid;
-  border-color: rgb(58,85,174);
+  border-color: #000000;
   min-width: 400px;
-  height: 70%;
+  height: 60%;
   top: 55%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
   background-color: rgb(242,241,240);
 
-  background-color: rgb(242,241,240);
 }
 
 .PurchaseTickets{
@@ -110,9 +109,8 @@ body {
   border-width: 5px;
   border-style: solid;
   border-color: rgb(58,85,174);
-  min-width: 40%;
-  max-width: 40%;
-  height: 60%;
+  width: 400px;
+  height: 40%;
   top: 55%;
   left: 50%;
   /* bring your own prefixes */
@@ -128,9 +126,8 @@ body {
   border-width: 5px;
   border-style: solid;
   border-color: rgb(58,85,174);
-  min-width: 40%;
-  max-width: 40%;
-  height: 60%;
+  width: 400px;
+  height: 40%;
   top: 55%;
   left: 50%;
   /* bring your own prefixes */
@@ -152,6 +149,7 @@ code {
 #Table{
   width:80%;
   margin:auto;
+  overflow-x: auto;
 
 }
 
@@ -162,6 +160,7 @@ code {
 #TableHeadCell{
   font-weight: bold;
   color: white;
+  text-align: center;
 }
 
 #TitleOverTable{
@@ -174,4 +173,13 @@ code {
 
 #CheckBoxInput{
   vertical-align:right;
+}
+
+#fixed-table {
+  table-layout: fixed;
+}
+.error-text {
+  text-align: center;
+  color: red;
+  margin-bottom: 10px;
 }

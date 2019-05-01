@@ -161,7 +161,7 @@ class MyEvents extends Component {
 
       return (
         <div>
-            <p id="TitleOverTable">This is a view of your current schedule</p>
+            <p id="TitleOverTable">Your current schedule</p>
         { t}
         </div>
       );

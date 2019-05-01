@@ -58,7 +58,12 @@ class CreateUser extends Component {
   }
 
   createUser() {
-    createUser(this.state.firstname, this.state.lastname, this.state.username.toLowerCase(), this.state.password, this.state.usertype)
+    console.log(this.state.password+  ": " + this.state.confirm)
+    if (this.state.password != this.state.confirm) {
+      store.dispatch({type:"DIFFERENT_PASSWORDS", payload:{}})
+    } else {
+      createUser(this.state.firstname, this.state.lastname, this.state.username.toLowerCase(), this.state.password, this.state.usertype)
+    }
    
   }
 
@@ -69,19 +74,19 @@ class CreateUser extends Component {
       option = "Type"
     }
 
-    console.log(option) 
-
     if (this.props.errors.error == "") {
 
       
     }else if (this.props.errors.error == "USER_TAKEN") {
-      var e = (<p>Error! That username is already in use!</p>)
+      var e = (<p class="error-text">Error! That username is already in use!</p>)
+    } else if (this.props.errors.error == "DIFFERENT_PASSWORDS") {
+      var e = (<p class="error-text">Error! passwords do not match</p>)
     }
     const s = (
       <div className= "create-user-block">
         {e}
         <div className= "create-user-block__form">
-        <p>Create user</p>
+        <strong><p class="center-text ">Create user</p></strong>
       <Input type="text" placeholder="first name" name="firstname" onChange ={this.handleChange}></Input>
       <br></br>
       <Input type="text" placeholder="last name" name="lastname" onChange ={this.handleChange}></Input>
@@ -109,7 +114,7 @@ class CreateUser extends Component {
       </FormControl>  
       </p>
       <br></br> <br></br>
-      <Button color="primary" variant="contained" onClick={this.createUser}>Create User</Button>
+      <Button color="secondary" variant="contained" onClick={this.createUser}>Create User</Button>
       </div>
       </div>
     )

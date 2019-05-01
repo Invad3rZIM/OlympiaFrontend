@@ -21,7 +21,8 @@ import { getAllAthletes } from './actions/athleteActions';
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    errors: state.errors,
   };
 }
 
@@ -45,10 +46,11 @@ class Login extends Component {
   }
 
   handleSubmit(event) {
-
+    store.dispatch({type: "CLEAR", payload:{}})
     if (this.state.username.length > 0 && this.state.password.length > 0) {
 
       console.log("attempt login")
+      console.log("RFM These are errors, " + this.props.errors.error)
     getAllArenas()
     getAllEvents()
     getAllSecurity()
@@ -69,11 +71,20 @@ class Login extends Component {
   
   render() {
 
+    if (this.props.errors.error == "") {
+
+      
+    }else if (this.props.errors.error == "INVALID_LOGIN") {
+      var e = (<p class="error-text">Error! Invalid Login</p>)
+    }
+
     return (
+
       <div className="login-block">
+      {e}
         <form className = "login-block__form">
         <br/> <br/>
-        <p>Login</p>
+        <strong><p class="center-text">Login</p></strong>
       <Input type="text" placeholder="username"  name="username" onChange ={this.handleChange}></Input>
       <br></br>  
       <Input type="password" placeholder="password" name="password" onChange={this.handleChange}></Input>

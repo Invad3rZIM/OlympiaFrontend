@@ -240,7 +240,7 @@ for(var propName in bio) {
                 <TableCell align="center"><Input type="number" onChange={e => updateDay(e)} placeholder="Day"></Input></TableCell>
                 <TableCell align="center"><Input type="number" onChange = {e => updateStart(e)}  placeholder="Start Time"></Input></TableCell>
                 <TableCell align="center"><Input type="number"onChange = {e => updateDuration(e)} placeholder="Duration"></Input></TableCell>
-                <TableCell align="center"><Button onClick={e => tryNewSigning(e)}>Create Autograph Session</Button></TableCell>
+                <TableCell align="center"><Button color="primary" onClick={e => tryNewSigning(e)}>Create Autograph Session</Button></TableCell>
               </TableRow>
               
             </TableHead>

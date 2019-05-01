@@ -141,7 +141,6 @@ break
                 case "guard" : 
                 var s = (
                     <div>
-                        <p> This is for security</p>
                         <GruntPage></GruntPage>
                     </div>
                 )
@@ -149,7 +148,6 @@ break
                 case "officer" : 
                 var s = (
                     <div>
-                        <p> This is for officers</p>
                         <OfficerPage></OfficerPage>
                 
                     </div>

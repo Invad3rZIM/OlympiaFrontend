@@ -108,10 +108,8 @@ class ArenaTable extends Component {
 
       return (
         <div>
-            <p id="TitleOverTable">Participatory Olympic Events</p>      
-           
-            <br/>
-
+            <p id="TitleOverTable"> All Arenas</p>      
+          
             {eventTable}
         </div>
       );

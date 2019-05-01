@@ -182,6 +182,7 @@ class PurchaseTickets extends Component {
 
   render() {
       var events = this.props.event.allEvents
+    
       var buy = "Buy"
 
       const paperStyles = {
@@ -245,7 +246,7 @@ class PurchaseTickets extends Component {
       
                     
                     <TableCell align="right">$ {row.ticketPrice} x <Input type="number" name={row.name}  onBlur={this.calcPrice2} align="center" placeholder={"" + 0}  pattern="\d+" min="0" ></Input> = <span id={ row.name + "x"}>{dict[row.name]}</span> </TableCell>
-                    <TableCell name={row.name} onClick={this.setX}><Button value={row.name} onClick={ e => this.buyPublicTickets(count[row.name], e)}  variant="contained" color="primary" >{buy}</Button></TableCell>
+                    <TableCell name={row.name} onClick={this.setX}><Button value={row.name} onClick={ e => this.buyPublicTickets(count[row.name], e)}  color="primary" >{buy}</Button></TableCell>
       
                   
                   </TableRow>
@@ -265,20 +266,20 @@ class PurchaseTickets extends Component {
             >Event</TableCell>
             <TableCell 
             id="TableHeadCell"
-            align="right">Arena</TableCell>
+            align="center">Arena</TableCell>
             <TableCell 
             id="TableHeadCell"
-            align="right">Tickets Remaining</TableCell>
+            align="center">Tickets Remaining</TableCell>
 
             <TableCell id="TableHeadCell"
-            align="right">Event Day</TableCell>
+            align="center">Event Day</TableCell>
             <TableCell id="TableHeadCell"
-            align="right">Event Start</TableCell>
+            align="center">Event Start</TableCell>
             <TableCell id="TableHeadCell"
-            align="right">Event Duration</TableCell>
+            align="center">Event Duration</TableCell>
             <TableCell 
             id="TableHeadCell"
-            align="right">(Staff) Ticket Price</TableCell>
+            align="center">(Staff) Ticket Price</TableCell>
             <TableCell></TableCell>
           </TableRow>
         </TableHead>
@@ -288,16 +289,16 @@ class PurchaseTickets extends Component {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.arena}</TableCell>
+              <TableCell align="center">{row.arena}</TableCell>
               
-              <TableCell align="right">{row.capacity - row.current}</TableCell>
+              <TableCell align="center">{row.capacity - row.current}</TableCell>
 
-              <TableCell align="right">{weekday(row.day)}</TableCell>
-              <TableCell align="right">{row.start}</TableCell>
-              <TableCell align="right">{row.duration}</TableCell>
+              <TableCell align="center">{weekday(row.day)}</TableCell>
+              <TableCell align="center">{row.start}</TableCell>
+              <TableCell align="center">{row.duration}</TableCell>
 
               
-              <TableCell align="right">$ {row.staffPrice} x <Input type="number" name={row.name}  onBlur={this.calcPricecalcPrice} align="center" placeholder={"" + 0}  pattern="\d+" min="0" ></Input> = <span id={ row.name + "x"}>{dict[row.name]}</span> </TableCell>
+              <TableCell align="center">$ {row.staffPrice} x <Input type="number" name={row.name}  onBlur={this.calcPricecalcPrice} align="center" placeholder={"" + 0}  pattern="\d+" min="0" ></Input> = <span id={ row.name + "x"}>{dict[row.name]}</span> </TableCell>
               <TableCell name={row.name} onClick={this.setX}><Button value={row.name} onClick={e => this.buyStaffTickets(count[row.name], e)}  variant="contained" color="primary" >{"Buy"}</Button></TableCell>
               
 
@@ -312,7 +313,7 @@ class PurchaseTickets extends Component {
 
       return (
         <div >
-            <p id="TitleOverTable">This is a view of all the events currently available for purchase!</p>
+            <p id="TitleOverTable">Tickets</p>
         { t}
         </div>
       );

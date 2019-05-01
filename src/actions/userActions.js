@@ -23,7 +23,10 @@ export function attemptLogin(user, pass) {
          if (responseJson.Key != 0 ) {
             redirect("DASHBOARD")
             getMyEvents(user)
-         }
+         } else {
+            console.log("RFM, INVALID LOGIN")
+            store.dispatch({type:"INVALID_LOGIN", payload:{}})
+            }
         }).catch((error) => {
         });
 }

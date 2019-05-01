@@ -114,19 +114,19 @@ class GruntPage extends Component {
       })
 
   var t = (
-    <Paper>
+    <Paper style={paperStyles}>
       <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Event</TableCell>
-            <TableCell align="right">Arena</TableCell>
-            <TableCell align="right">Registration Count</TableCell>
-            <TableCell align="right">Event Capacity</TableCell>
+        <TableHead id="TableHeadRow">
+          <TableRow id="TableHeadRow">
+            <TableCell id="TableHeadCell" align="right">Event</TableCell>
+            <TableCell id="TableHeadCell" align="right">Arena</TableCell>
+            <TableCell id="TableHeadCell" align="right">Registration Count</TableCell>
+            <TableCell id="TableHeadCell" align="right">Event Capacity</TableCell>
 
-            <TableCell align="right">Current Security</TableCell>
-            <TableCell align="right">Preferred Count</TableCell>
+            <TableCell id="TableHeadCell" align="right">Current Security</TableCell>
+            <TableCell id="TableHeadCell"  align="right">Preferred Count</TableCell>
 
-            <TableCell align="right">Get Security</TableCell>
+            <TableCell id="TableHeadCell"  align="right">Get Security</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -144,7 +144,7 @@ class GruntPage extends Component {
               <TableCell align="center">{row.currentGuards}</TableCell>
 
             <TableCell align="center"><Input onChange={ this.handleNeededChange} name={row.name} placeholder={""+ row.needed}></Input></TableCell>
-              <TableCell align="center"><Button onClick={(e) => this.updateGuards(row.name, row.needed, e)}>Update</Button></TableCell>
+              <TableCell align="center"><Button color="primary" onClick={(e) => this.updateGuards(row.name, row.needed, e)}>Update</Button></TableCell>
 
             </TableRow>
           ))}
@@ -190,13 +190,13 @@ class GruntPage extends Component {
 
       return (
         <div>
-            <p id="TitleOverTable">This is a view of all the events currently in the roster!</p>
+            <p id="TitleOverTable">Schedule Security</p>
             { t}
             
             <br/>
             <br/>
             <br/>
-
+            <p id="TitleOverTable">Security Guards</p>
             {guardSchedules}
         </div>
       );
